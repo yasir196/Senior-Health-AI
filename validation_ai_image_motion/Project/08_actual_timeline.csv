@@ -1,0 +1,5 @@
+Scene ID,Script Text,Actual Audio Start,Actual Audio End,Duration,Avatar Chunk,Timing Source
+S001,Scene 1,0.000,1.250,1.250,c1.mp4,word
+S002,Scene 2,1.250,2.500,1.250,c1.mp4,word
+S003,Scene 3,2.500,3.750,1.250,c1.mp4,word
+S004,Scene 4,3.750,5.000,1.250,c1.mp4,word

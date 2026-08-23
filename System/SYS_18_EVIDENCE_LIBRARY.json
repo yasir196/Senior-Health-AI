@@ -1,0 +1,72 @@
+{
+  "module": "evidence_library_manager",
+  "version": "1.0",
+  "storage_root": "Evidence/",
+  "core_files": {
+    "source_library": "Evidence/evidence_sources.csv",
+    "claim_registry": "Evidence/claim_registry.csv",
+    "topic_index": "Evidence/topic_index.md",
+    "review_queue": "Evidence/review_queue.csv",
+    "readme": "Evidence/README.md"
+  },
+  "source_schema": [
+    "source_id",
+    "topic_tags",
+    "condition_tags",
+    "source_title",
+    "authors_or_body",
+    "year",
+    "url",
+    "evidence_tier",
+    "source_type",
+    "key_finding",
+    "supports_claims",
+    "limitations",
+    "contraindications_or_cautions",
+    "last_checked",
+    "status",
+    "used_in_projects"
+  ],
+  "claim_schema": [
+    "claim_id",
+    "claim_text",
+    "approved_wording",
+    "topic_tags",
+    "source_ids",
+    "evidence_tier_floor",
+    "claim_strength",
+    "allowed_context",
+    "required_caveats",
+    "forbidden_wording",
+    "last_medical_review",
+    "status"
+  ],
+  "approved_status_values": ["approved", "needs_review", "retired", "do_not_use"],
+  "claim_strength_values": ["strong", "moderate", "limited", "preliminary"],
+  "validation_rules": [
+    { "id": "EV1", "rule": "approved_sources_must_be_tier_1_to_4", "severity": "block" },
+    { "id": "EV2", "rule": "claims_must_map_to_approved_source_ids", "severity": "block" },
+    { "id": "EV3", "rule": "claims_require_approved_and_forbidden_wording", "severity": "block" },
+    { "id": "EV4", "rule": "elevated_scrutiny_claims_require_caveats", "severity": "block" },
+    { "id": "EV5", "rule": "guidelines_require_last_checked_and_review_cadence", "severity": "warn" },
+    { "id": "EV6", "rule": "library_reuse_cannot_bypass_project_research_or_fact_check", "severity": "block" },
+    { "id": "EV7", "rule": "library_cannot_override_SYS_09", "severity": "block" }
+  ],
+  "agent_usage": {
+    "research_agent": [
+      "search topic_index before external research",
+      "reuse approved source_ids only after checking exact claim support",
+      "add new approved sources after project medical gate passes"
+    ],
+    "medical_agent": [
+      "cross_check project claims against claim_registry",
+      "flag stale or mismatched sources in review_queue",
+      "record final pass_fail in 13_fact_check_log.md"
+    ]
+  },
+  "immutability_boundary": {
+    "cannot_modify": ["System/SYS_09_MEDICAL_RULE_ENGINE.json"],
+    "cannot_override": ["medical_gate_failures", "tier_requirements", "clinician_caveats"],
+    "note": "The Evidence Library is a reusable evidence index, not a medical authority above SYS_09."
+  }
+}

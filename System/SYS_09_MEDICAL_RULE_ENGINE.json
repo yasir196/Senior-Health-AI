@@ -1,0 +1,47 @@
+{
+  "module": "medical_rule_engine",
+  "version": "1.0",
+  "immutability": {
+    "frozen": true,
+    "write_access": "none",
+    "note": "This module is never modified by performance data or the self-improvement engine (SYS_17). Any proposed write to this module is rejected and logged as VIOLATION_FROZEN_WRITE."
+  },
+  "evidence_hierarchy": [
+    { "tier": 1, "source": "systematic_review_meta_analysis", "citable": true, "weight": 1.0 },
+    { "tier": 2, "source": "rct", "citable": true, "weight": 0.85 },
+    { "tier": 3, "source": "cohort_observational", "citable": true, "weight": 0.6 },
+    { "tier": 4, "source": "major_body_guideline", "citable": true, "weight": 0.7 },
+    { "tier": 5, "source": "expert_opinion", "citable": "supporting_only", "weight": 0.3 },
+    { "tier": 6, "source": "anecdote", "citable": false, "weight": 0.0 }
+  ],
+  "claim_validation_rules": [
+    { "id": "M1", "rule": "claim_traces_to_tier_1_to_4", "action_if_fail": "revise_or_cut", "severity": "block" },
+    { "id": "M2", "rule": "statistic_in_context", "action_if_fail": "correct", "severity": "block" },
+    { "id": "M3", "rule": "no_individual_diagnosis", "severity": "block" },
+    { "id": "M4", "rule": "no_cure_promise", "severity": "block" },
+    { "id": "M5", "rule": "no_med_alteration_instruction", "severity": "block" },
+    { "id": "M6", "rule": "clinician_caveat_present", "severity": "block" },
+    { "id": "M7", "rule": "correlation_not_stated_as_causation", "severity": "block" },
+    { "id": "M8", "rule": "mechanism_explained_plain_language", "severity": "warn" }
+  ],
+  "claim_decision_tree": {
+    "steps": [
+      { "check": "traces_to_tier_1_to_4", "on_false": "CUT_or_REVISE (M1 block)", "on_true": "continue" },
+      { "check": "touches_elevated_scrutiny_trigger", "on_true": "require_caveat + double_fact_check", "on_false": "single_fact_check" },
+      { "check": "implies_causation_from_correlational_data", "on_true": "rewrite_as_association (M7 block)", "on_false": "continue" },
+      { "check": "diagnoses_or_promises_cure_or_alters_meds", "on_true": "BLOCK (M3/M4/M5)", "on_false": "PASS" }
+    ]
+  },
+  "elevated_scrutiny_triggers": [
+    "medication",
+    "dosing",
+    "drug_interaction",
+    "serious_disease_claim",
+    "reversal_claim"
+  ],
+  "policy_compliance_check": {
+    "platform_medical_misinfo": "required",
+    "fail_action": "block_publish"
+  },
+  "safety_directive": "This niche serves a vulnerable audience. When evidence is weak, the claim is softened or removed. Packaging drama never overrides factual integrity."
+}

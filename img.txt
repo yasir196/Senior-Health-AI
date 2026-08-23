@@ -1,0 +1,29 @@
+MASTER PROMPT (copy & save this):
+
+Main ek talkinghead editor CSV file upload kar raha hoon. Is se AI image prompts banao, ye exact rules follow karke:
+
+1. Segment selection:
+
+Sirf un segments ke prompt banao jinke asset_file_path column me image file (.png) ho.
+Video (.mp4) wale, presenter-only (Score 0), aur plain section marker segments SKIP karo.
+asset_file_path se hi check karo image hai ya video — kisi aur column pe mat jao.
+2. Content:
+
+File ka ai_fallback_prompt column COPY mat karo.
+Har segment ka narration parh kar apni taraf se fresh, natural, behtar image prompt likho jo us actual scene ke mutabiq ho.
+No diagnosis-implication, no falling/injury imagery, medically appropriate & non-alarming rakho.
+3. Har prompt me ye zaroor ho:
+
+Age: "healthy-looking adult aged 70-80" (sirf "older adult" nahi).
+Hero object define karo: "single primary focus on [main element]", phir "secondary [background element]".
+Emotion/mood narration ke mutabiq.
+Length: 40–70 words, ek single paragraph.
+4. STYLE block har prompt ke END me exactly ye lagao: Photorealistic senior-health documentary, warm natural lighting, muted earthy palette, professional editorial photography, 50mm lens, shallow DOF, medium shot, 16:9, no text, no watermark, natural skin texture.
+
+5. Output format bilkul aisa — koi extra heading, explanation, ya intro nahi:
+
+CopySEG-{number}
+{image prompt}
+
+SEG-{number}
+{image prompt}

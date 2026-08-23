@@ -1,0 +1,3 @@
+queue_id,date_added,source_or_claim_id,reason,priority,owner,status,resolution
+RQ001,2026-07-09,SRC_BP_DASH_NHLBI_2026,"Guideline pages can update; verify date before each blood-pressure project.",medium,Research_Agent,open,
+RQ002,2026-07-09,SRC_SLEEP_KIWI_2011,"Small non-senior study is commonly overclaimed; recheck wording before every kiwi or sleep-food project.",high,Medical_Agent,open,

@@ -1,0 +1,150 @@
+{
+  "engine_name": "SYS_01_TOPIC_ENGINE",
+  "version": "1.1",
+  "purpose": "Guide original topic ideation, content diversity, and synchronized Markdown plus CSV Topic Intelligence outputs before research.",
+  "approved_content_formats": [
+    "Top Foods",
+    "Best Habits",
+    "Worst Habits",
+    "Warning Signs",
+    "Symptoms Explained",
+    "Morning Routine",
+    "Evening Routine",
+    "Common Mistakes",
+    "Myths vs Facts",
+    "Doctor Explains Research",
+    "Food Comparison",
+    "Supplement Comparison",
+    "Timeline (\"What Happens After 30 Days\")",
+    "Grocery Shopping Guide",
+    "Healthy Swaps",
+    "Frequently Asked Questions",
+    "Hidden Causes",
+    "What Most Seniors Miss",
+    "Daily Routine",
+    "Science Explained Simply"
+  ],
+  "topic_count": 15,
+  "outputs": {
+    "human_readable": "Projects/<topic_slug>/00_topic_ideas.md",
+    "machine_readable": "Projects/<topic_slug>/00_topic_ideas.csv",
+    "both_required_for_completion": true
+  },
+  "canonical_topic_fields": [
+    "rank",
+    "topic",
+    "packaging_style",
+    "target_audience",
+    "research_availability",
+    "medical_risk",
+    "novelty",
+    "opportunity_score",
+    "why_now",
+    "approved_content_format",
+    "repetition_risk",
+    "alternative_formats",
+    "viewer_problem",
+    "evergreen_score",
+    "confidence",
+    "suggested_research_direction"
+  ],
+  "field_rules": {
+    "rank": {"type": "integer", "minimum": 1, "sequential": true},
+    "topic": {"type": "string", "research_topic_not_youtube_title": true},
+    "opportunity_score": {"type": "integer", "minimum": 1, "maximum": 100},
+    "evergreen_score": {"type": "integer", "minimum": 1, "maximum": 100},
+    "confidence": {"allowed_values": ["HIGH", "MEDIUM", "LOW"]},
+    "research_availability": {"allowed_values": ["HIGH", "MEDIUM", "LOW"]},
+    "medical_risk": {"allowed_values": ["LOW", "MEDIUM", "HIGH"]},
+    "novelty": {"allowed_values": ["HIGH", "MEDIUM", "LOW"]},
+    "repetition_risk": {"allowed_values": ["LOW", "MEDIUM", "HIGH"]},
+    "alternative_formats": {"csv_internal_delimiter": "|", "high_risk_minimum_count": 5},
+    "viewer_problem": {"one_clear_sentence": true},
+    "suggested_research_direction": {
+      "required_components": [
+        "primary_research_question",
+        "key_evidence_categories",
+        "safety_considerations",
+        "common_misconceptions_to_investigate"
+      ]
+    }
+  },
+  "markdown_required_sections": [
+    "Consensus Inputs Used",
+    "Consensus Intelligence Summary",
+    "Top 5 Safe Opportunity Clusters",
+    "Top 3 High-Upside Experiments",
+    "15 Original Research-Worthy Topics",
+    "Topic Intelligence and Diversity Metadata",
+    "Top 5 Opportunities for Research-Agent Handoff",
+    "Content Diversity Gate",
+    "Stage Boundary"
+  ],
+  "csv_contract": {
+    "encoding": "UTF-8 with BOM",
+    "delimiter": ",",
+    "header_required": true,
+    "header_order": [
+      "rank",
+      "topic",
+      "packaging_style",
+      "target_audience",
+      "research_availability",
+      "medical_risk",
+      "novelty",
+      "opportunity_score",
+      "why_now",
+      "approved_content_format",
+      "repetition_risk",
+      "alternative_formats",
+      "viewer_problem",
+      "evergreen_score",
+      "confidence",
+      "suggested_research_direction"
+    ],
+    "quote_fields_containing": [",", "double_quote", "carriage_return", "line_feed"],
+    "escape_embedded_double_quote_by_doubling": true,
+    "markdown_allowed": false,
+    "duplicate_topics_allowed": false,
+    "one_row_per_topic": true,
+    "excel_compatible": true
+  },
+  "diversity_scoring": {
+    "score_range": "0-100",
+    "factors": [
+      "content_format_freshness",
+      "topic_angle_freshness",
+      "similarity_to_previous_10_projects",
+      "consecutive_format_risk",
+      "audience_value_variety"
+    ]
+  },
+  "repetition_risk": {
+    "allowed_values": ["LOW", "MEDIUM", "HIGH"],
+    "high_risk_requires_alternative_format_count": 5
+  },
+  "quality_gates": {
+    "max_consecutive_same_format": 3,
+    "fail_if_more_than_3_consecutive_projects_use_same_format": true,
+    "content_diversity_runs_before_research": true
+  },
+  "synchronization_validation": {
+    "fail_if_markdown_or_csv_missing": true,
+    "fail_if_topic_counts_differ": true,
+    "fail_if_ranks_differ": true,
+    "fail_if_opportunity_scores_differ": true,
+    "fail_if_csv_topic_missing_from_markdown": true,
+    "fail_if_required_columns_missing_or_out_of_order": true,
+    "fail_if_duplicate_topics_exist": true,
+    "fail_if_csv_topic_is_youtube_title": true,
+    "fail_if_csv_contains_markdown": true,
+    "parse_csv_and_compare_back_to_canonical_records": true
+  },
+  "notes": [
+    "Topic Generator must not perform medical research.",
+    "Topic Generator must not create YouTube titles.",
+    "Both outputs must be rendered from one canonical topic list.",
+    "If previous 10 projects are unavailable, mark similarity as unknown.",
+    "Do not run Research_Agent until both Topic Intelligence files and the Content Diversity Gate pass."
+  ]
+}

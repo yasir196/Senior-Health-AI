@@ -1,0 +1,542 @@
+{
+  "canvas_config": {
+    "height": 1080,
+    "ratio": "16:9",
+    "width": 1920
+  },
+  "duration": 8000000,
+  "extra_info": {
+    "generator": "Senior Health AI V3.4",
+    "supported_schema": "CapCut Desktop 8.7 Windows multi-file draft layout",
+    "timeline_manifest": "../timeline_manifest.json"
+  },
+  "fps": 30,
+  "free_render_index_mode_on": false,
+  "id": "f9a58e50-3123-5bfc-b81d-28dd04a81d8d",
+  "last_modified_platform": {
+    "app_source": "cc",
+    "app_version": "8.7.0",
+    "os": "windows"
+  },
+  "materials": {
+    "audio_fades": [],
+    "audios": [
+      {
+        "duration": 8000000,
+        "id": "e0fc75f4-b0db-53f6-a382-10a0b9ebf5ff",
+        "name": "c1.mp4",
+        "path": "/mnt/data/capcut_fix/prodlock_work/validation_ai_image_motion/Project/avatars/c1.mp4",
+        "type": "extract_music"
+      }
+    ],
+    "canvases": [],
+    "common_masks": [],
+    "manual_deformations": [],
+    "masks": [],
+    "material_animations": [],
+    "placeholder_infos": [],
+    "smart_crops": [],
+    "sound_channel_mappings": [],
+    "speeds": [],
+    "stickers": [],
+    "texts": [],
+    "transitions": [],
+    "video_effects": [],
+    "videos": [
+      {
+        "category_name": "local",
+        "duration": 8000000,
+        "has_audio": true,
+        "height": 1080,
+        "id": "fc84a22b-0739-540c-8450-a6b75c78e36b",
+        "local_material_id": "fc84a22b-0739-540c-8450-a6b75c78e36b",
+        "material_name": "c1.mp4",
+        "name": "c1.mp4",
+        "path": "/mnt/data/capcut_fix/prodlock_work/validation_ai_image_motion/Project/avatars/c1.mp4",
+        "type": "video",
+        "width": 1920
+      },
+      {
+        "category_name": "local",
+        "duration": 1250000,
+        "has_audio": false,
+        "height": 1080,
+        "id": "9a2db935-9df3-50cc-a590-6e1009c81b51",
+        "local_material_id": "9a2db935-9df3-50cc-a590-6e1009c81b51",
+        "material_name": "image_001.png",
+        "name": "image_001.png",
+        "path": "/mnt/data/capcut_fix/prodlock_work/validation_ai_image_motion/Project/assets/images/image_001.png",
+        "type": "photo",
+        "width": 1920
+      },
+      {
+        "category_name": "local",
+        "duration": 1250000,
+        "has_audio": false,
+        "height": 1080,
+        "id": "808c1c8a-c918-5cf1-835d-11da68f0657d",
+        "local_material_id": "808c1c8a-c918-5cf1-835d-11da68f0657d",
+        "material_name": "image_002.png",
+        "name": "image_002.png",
+        "path": "/mnt/data/capcut_fix/prodlock_work/validation_ai_image_motion/Project/assets/images/image_002.png",
+        "type": "photo",
+        "width": 1920
+      },
+      {
+        "category_name": "local",
+        "duration": 1250000,
+        "has_audio": false,
+        "height": 1080,
+        "id": "d94af7ed-1b96-52cd-8ea7-5c124c36b80d",
+        "local_material_id": "d94af7ed-1b96-52cd-8ea7-5c124c36b80d",
+        "material_name": "image_003.png",
+        "name": "image_003.png",
+        "path": "/mnt/data/capcut_fix/prodlock_work/validation_ai_image_motion/Project/assets/images/image_003.png",
+        "type": "photo",
+        "width": 1920
+      },
+      {
+        "category_name": "local",
+        "duration": 1250000,
+        "has_audio": false,
+        "height": 1080,
+        "id": "60d53e72-a947-5e8c-80d7-673be364d42a",
+        "local_material_id": "60d53e72-a947-5e8c-80d7-673be364d42a",
+        "material_name": "image_004.png",
+        "name": "image_004.png",
+        "path": "/mnt/data/capcut_fix/prodlock_work/validation_ai_image_motion/Project/assets/images/image_004.png",
+        "type": "photo",
+        "width": 1920
+      }
+    ],
+    "vocal_separations": []
+  },
+  "name": "Project",
+  "new_version": "8.7.0",
+  "platform": {
+    "app_source": "cc",
+    "app_version": "8.7.0",
+    "os": "windows"
+  },
+  "timeline_id": "9ee01b59-cbbe-52ab-9180-f0b99ec2d765",
+  "tracks": [
+    {
+      "flag": 0,
+      "id": "19ee1e85-9c6d-5416-82bb-384a5ccfce0a",
+      "name": "V1 Avatar",
+      "segments": [
+        {
+          "clip": {
+            "alpha": 1.0,
+            "flip": {
+              "horizontal": false,
+              "vertical": false
+            },
+            "rotation": 0.0,
+            "scale": {
+              "x": 1.0,
+              "y": 1.0
+            },
+            "transform": {
+              "x": 0.0,
+              "y": 0.0
+            }
+          },
+          "extra_material_refs": [],
+          "id": "38098979-3d96-546e-b32a-4d4d3bd5cc94",
+          "material_id": "fc84a22b-0739-540c-8450-a6b75c78e36b",
+          "source_timerange": {
+            "duration": 8000000,
+            "start": 0
+          },
+          "target_timerange": {
+            "duration": 8000000,
+            "start": 0
+          },
+          "visible": true,
+          "volume": 0.0
+        }
+      ],
+      "type": "video"
+    },
+    {
+      "flag": 0,
+      "id": "167ade2a-6368-5c59-bc14-2cbab943d602",
+      "name": "V2 Images",
+      "segments": [
+        {
+          "clip": {
+            "alpha": 1.0,
+            "flip": {
+              "horizontal": false,
+              "vertical": false
+            },
+            "rotation": 0.0,
+            "scale": {
+              "x": 1.08,
+              "y": 1.08
+            },
+            "transform": {
+              "x": 0.0,
+              "y": 0.0
+            }
+          },
+          "common_keyframes": [
+            {
+              "id": "287257d5-c343-5e49-9b99-8ccb489e55c8",
+              "keyframe_list": [
+                {
+                  "curveType": "FreeCurveInOut",
+                  "graphID": "",
+                  "id": "13e5479f-acab-5cf7-ab2b-2d9286ac7e12",
+                  "left_control": {
+                    "x": 0.0,
+                    "y": 0.0
+                  },
+                  "right_control": {
+                    "x": 400000.0,
+                    "y": 0.07520000000000006
+                  },
+                  "string_value": "",
+                  "time_offset": 0,
+                  "values": [
+                    1.0
+                  ]
+                },
+                {
+                  "curveType": "Line",
+                  "graphID": "",
+                  "id": "1a803699-bcdf-5519-9700-7a157b1f122e",
+                  "left_control": {
+                    "x": 0.0,
+                    "y": 0.0
+                  },
+                  "right_control": {
+                    "x": 0.0,
+                    "y": 0.0
+                  },
+                  "string_value": "",
+                  "time_offset": 1250000,
+                  "values": [
+                    1.08
+                  ]
+                }
+              ],
+              "material_id": "",
+              "property_type": "KFTypeScaleX"
+            }
+          ],
+          "extra_material_refs": [],
+          "id": "8dc16073-941d-50bb-b47a-c9f8c4a34ffc",
+          "keyframe_refs": [],
+          "material_id": "9a2db935-9df3-50cc-a590-6e1009c81b51",
+          "source_timerange": {
+            "duration": 1250000,
+            "start": 0
+          },
+          "target_timerange": {
+            "duration": 1250000,
+            "start": 0
+          },
+          "uniform_scale": {
+            "on": true,
+            "value": 1.0
+          },
+          "visible": true,
+          "volume": 0.0
+        },
+        {
+          "clip": {
+            "alpha": 1.0,
+            "flip": {
+              "horizontal": false,
+              "vertical": false
+            },
+            "rotation": 0.0,
+            "scale": {
+              "x": 1.0,
+              "y": 1.0
+            },
+            "transform": {
+              "x": 0.0,
+              "y": 0.0
+            }
+          },
+          "common_keyframes": [
+            {
+              "id": "c7866ef3-d184-527e-9109-e5ad2a698824",
+              "keyframe_list": [
+                {
+                  "curveType": "FreeCurveInOut",
+                  "graphID": "",
+                  "id": "686e4635-1f62-51af-9523-f9173da2a2a6",
+                  "left_control": {
+                    "x": 0.0,
+                    "y": 0.0
+                  },
+                  "right_control": {
+                    "x": 400000.0,
+                    "y": -0.07520000000000006
+                  },
+                  "string_value": "",
+                  "time_offset": 0,
+                  "values": [
+                    1.08
+                  ]
+                },
+                {
+                  "curveType": "Line",
+                  "graphID": "",
+                  "id": "690374db-011a-5644-83c1-b694b462d52f",
+                  "left_control": {
+                    "x": 0.0,
+                    "y": 0.0
+                  },
+                  "right_control": {
+                    "x": 0.0,
+                    "y": 0.0
+                  },
+                  "string_value": "",
+                  "time_offset": 1250000,
+                  "values": [
+                    1.0
+                  ]
+                }
+              ],
+              "material_id": "",
+              "property_type": "KFTypeScaleX"
+            }
+          ],
+          "extra_material_refs": [],
+          "id": "b5870071-84ba-5ea3-b912-8b127aefbc2d",
+          "keyframe_refs": [],
+          "material_id": "808c1c8a-c918-5cf1-835d-11da68f0657d",
+          "source_timerange": {
+            "duration": 1250000,
+            "start": 0
+          },
+          "target_timerange": {
+            "duration": 1250000,
+            "start": 1250000
+          },
+          "uniform_scale": {
+            "on": true,
+            "value": 1.0
+          },
+          "visible": true,
+          "volume": 0.0
+        },
+        {
+          "clip": {
+            "alpha": 1.0,
+            "flip": {
+              "horizontal": false,
+              "vertical": false
+            },
+            "rotation": 0.0,
+            "scale": {
+              "x": 1.08,
+              "y": 1.08
+            },
+            "transform": {
+              "x": 0.0,
+              "y": 0.0
+            }
+          },
+          "common_keyframes": [
+            {
+              "id": "e3b1fa64-9fc5-521b-80bb-cf15950cd1a0",
+              "keyframe_list": [
+                {
+                  "curveType": "FreeCurveInOut",
+                  "graphID": "",
+                  "id": "46fa40ee-183b-5ed9-b170-1c132bdaacc6",
+                  "left_control": {
+                    "x": 0.0,
+                    "y": 0.0
+                  },
+                  "right_control": {
+                    "x": 400000.0,
+                    "y": 0.07520000000000006
+                  },
+                  "string_value": "",
+                  "time_offset": 0,
+                  "values": [
+                    1.0
+                  ]
+                },
+                {
+                  "curveType": "Line",
+                  "graphID": "",
+                  "id": "150636a0-676a-5bc6-bf3d-7e77db9e739c",
+                  "left_control": {
+                    "x": 0.0,
+                    "y": 0.0
+                  },
+                  "right_control": {
+                    "x": 0.0,
+                    "y": 0.0
+                  },
+                  "string_value": "",
+                  "time_offset": 1250000,
+                  "values": [
+                    1.08
+                  ]
+                }
+              ],
+              "material_id": "",
+              "property_type": "KFTypeScaleX"
+            }
+          ],
+          "extra_material_refs": [],
+          "id": "a39bed29-86e8-5367-8034-baafc77db499",
+          "keyframe_refs": [],
+          "material_id": "d94af7ed-1b96-52cd-8ea7-5c124c36b80d",
+          "source_timerange": {
+            "duration": 1250000,
+            "start": 0
+          },
+          "target_timerange": {
+            "duration": 1250000,
+            "start": 2500000
+          },
+          "uniform_scale": {
+            "on": true,
+            "value": 1.0
+          },
+          "visible": true,
+          "volume": 0.0
+        },
+        {
+          "clip": {
+            "alpha": 1.0,
+            "flip": {
+              "horizontal": false,
+              "vertical": false
+            },
+            "rotation": 0.0,
+            "scale": {
+              "x": 1.0,
+              "y": 1.0
+            },
+            "transform": {
+              "x": 0.0,
+              "y": 0.0
+            }
+          },
+          "common_keyframes": [
+            {
+              "id": "323b4088-6074-5e73-aee5-7e54b181b853",
+              "keyframe_list": [
+                {
+                  "curveType": "FreeCurveInOut",
+                  "graphID": "",
+                  "id": "61112ec4-1519-56d4-a7c0-daef10332560",
+                  "left_control": {
+                    "x": 0.0,
+                    "y": 0.0
+                  },
+                  "right_control": {
+                    "x": 400000.0,
+                    "y": -0.07520000000000006
+                  },
+                  "string_value": "",
+                  "time_offset": 0,
+                  "values": [
+                    1.08
+                  ]
+                },
+                {
+                  "curveType": "Line",
+                  "graphID": "",
+                  "id": "776ea8d8-9d9d-5839-9334-215c2be36a99",
+                  "left_control": {
+                    "x": 0.0,
+                    "y": 0.0
+                  },
+                  "right_control": {
+                    "x": 0.0,
+                    "y": 0.0
+                  },
+                  "string_value": "",
+                  "time_offset": 1250000,
+                  "values": [
+                    1.0
+                  ]
+                }
+              ],
+              "material_id": "",
+              "property_type": "KFTypeScaleX"
+            }
+          ],
+          "extra_material_refs": [],
+          "id": "c9e441ca-427d-5575-b5d9-adf9ea008bb3",
+          "keyframe_refs": [],
+          "material_id": "60d53e72-a947-5e8c-80d7-673be364d42a",
+          "source_timerange": {
+            "duration": 1250000,
+            "start": 0
+          },
+          "target_timerange": {
+            "duration": 1250000,
+            "start": 3750000
+          },
+          "uniform_scale": {
+            "on": true,
+            "value": 1.0
+          },
+          "visible": true,
+          "volume": 0.0
+        }
+      ],
+      "type": "video"
+    },
+    {
+      "flag": 0,
+      "id": "e8ced84b-7ebe-517c-9870-2fe04dc64a89",
+      "name": "V3 B-roll",
+      "segments": [],
+      "type": "video"
+    },
+    {
+      "flag": 0,
+      "id": "29353d60-33c0-5e5f-a8e8-ed891e18b55d",
+      "name": "A1 Avatar Audio",
+      "segments": [
+        {
+          "clip": {
+            "alpha": 1.0,
+            "flip": {
+              "horizontal": false,
+              "vertical": false
+            },
+            "rotation": 0.0,
+            "scale": {
+              "x": 1.0,
+              "y": 1.0
+            },
+            "transform": {
+              "x": 0.0,
+              "y": 0.0
+            }
+          },
+          "extra_material_refs": [],
+          "id": "dde6f965-75ab-5433-a924-aac1d4e6c20a",
+          "material_id": "e0fc75f4-b0db-53f6-a382-10a0b9ebf5ff",
+          "source_timerange": {
+            "duration": 8000000,
+            "start": 0
+          },
+          "target_timerange": {
+            "duration": 8000000,
+            "start": 0
+          },
+          "visible": true,
+          "volume": 1.0
+        }
+      ],
+      "type": "audio"
+    }
+  ],
+  "version": 360000
+}

@@ -1,0 +1,76 @@
+{
+  "module": "psychology_lookup_tables",
+  "version": "1.0",
+  "fears": [
+    { "id": "F1", "label": "loss_of_independence", "intensity": 10 },
+    { "id": "F2", "label": "sudden_cardiac_event", "intensity": 9 },
+    { "id": "F3", "label": "dementia", "intensity": 9 },
+    { "id": "F4", "label": "blindness", "intensity": 9 },
+    { "id": "F5", "label": "falling_frailty", "intensity": 8 },
+    { "id": "F6", "label": "medication_harm", "intensity": 8 },
+    { "id": "F7", "label": "silent_undetected_disease", "intensity": 10 }
+  ],
+  "desires": [
+    { "id": "D1", "label": "stay_independent", "weight": 10 },
+    { "id": "D2", "label": "sharp_mind", "weight": 9 },
+    { "id": "D3", "label": "guilt_free_food", "weight": 8 },
+    { "id": "D4", "label": "control_over_health", "weight": 9 },
+    { "id": "D5", "label": "insider_knowledge", "weight": 7 },
+    { "id": "D6", "label": "max_result_min_effort", "weight": 8 }
+  ],
+  "objection_handlers": {
+    "clickbait": "deliver_specific_payoff_early",
+    "doctor_never_said": "frame_as_omitted_not_anti_medicine",
+    "too_good_true": "cite_study_avoid_implausible_numbers",
+    "not_applicable": "apply_self_id_trigger"
+  },
+  "emotion_conversion_rank": [
+    { "emotion": "relief", "reach": "broadest", "score": 10 },
+    { "emotion": "fear_plus_salvation", "reach": "high", "score": 9 },
+    { "emotion": "hope", "reach": "high", "score": 8 },
+    { "emotion": "righteous_validation", "reach": "medium", "score": 7 }
+  ],
+  "curiosity_triggers": [
+    "THIS_placeholder",
+    "what_happens",
+    "hidden",
+    "withheld_number",
+    "body_as_oracle",
+    "fast_payoff_tease"
+  ],
+  "trust_triggers": [
+    "consistent_presenter",
+    "one_cited_study",
+    "mechanism_explanation",
+    "balanced_framing",
+    "clinician_caveat",
+    "specificity"
+  ],
+  "decision_psychology": {
+    "click": {
+      "made_in_seconds": 2,
+      "drivers": ["self_identification", "emotional_anchor", "curiosity_gap"]
+    },
+    "watch": {
+      "renewed_every_seconds": [60, 90],
+      "drivers": ["open_loops"]
+    },
+    "trust": {
+      "made_at": "end_of_video",
+      "drivers": ["payoff_matched_promise"]
+    }
+  },
+  "retention_psychology": [
+    "open_new_loop_before_closing_previous",
+    "reteased_strongest_item",
+    "items_ascending_importance",
+    "micro_cliffhangers"
+  ],
+  "loop_cadence_seconds": [60, 90],
+  "ctr_atoms": [
+    "one_dominant_word",
+    "one_emotional_face",
+    "one_hero_object",
+    "one_unresolved_question"
+  ]
+}

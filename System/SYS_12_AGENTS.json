@@ -1,0 +1,317 @@
+{
+  "module": "agent_definitions",
+  "version": "1.2",
+  "orchestration": "SYS_11.dag",
+  "project_root": "Projects/<topic_slug>/",
+  "agents": [
+    {
+      "name": "topic_generator_agent",
+      "file": "Agents/Topic_Generator_Agent.md",
+      "order": 1.5,
+      "role": "Generate a diverse, ranked set of original topic candidates for the approved channel niche before outlier validation.",
+      "input_schema": {
+        "project_initialization": "approved_channel_niche"
+      },
+      "output_files": [
+        "00_topic_ideas.md",
+        "00_topic_ideas.csv"
+      ],
+      "next": [
+        "human_topic_selection"
+      ],
+      "failure_route": "topic_generator_agent",
+      "responsibility_boundary": [
+        "generates_multiple_candidate_topics",
+        "scores_and_ranks_topics",
+        "does_not_perform_final_outlier_validation",
+        "does_not_select_final_topic_automatically"
+      ],
+      "reads": [
+        "SYS_01"
+      ]
+    },
+    {
+      "name": "outlier_agent",
+      "file": "Agents/Outlier_Agent.md",
+      "order": 2,
+      "input_schema": {
+        "topic_ideas_markdown": "00_topic_ideas.md",
+        "topic_ideas_csv": "00_topic_ideas.csv",
+        "selected_topic_id": "required"
+      },
+      "output_files": [
+        "01_topic_validation.md",
+        "01b_outlier_references.md"
+      ],
+      "next": [
+        "research_agent"
+      ],
+      "failure_route": "outlier_agent",
+      "reads": [
+        "SYS_01",
+        "SYS_03",
+        "SYS_07",
+        "SYS_08",
+        "SYS_14",
+        "SYS_15"
+      ]
+    },
+    {
+      "name": "research_agent",
+      "file": "Agents/Research_Agent.md",
+      "order": 3,
+      "input_schema": {
+        "topic_validation": "01_topic_validation.md"
+      },
+      "output_files": [
+        "02_research_sheet.md"
+      ],
+      "next": [
+        "medical_agent_gate_1"
+      ],
+      "failure_route": "research_agent",
+      "constraints": [
+        "tier_1_to_4_only"
+      ],
+      "reads": [
+        "SYS_02",
+        "SYS_09",
+        "SYS_11",
+        "SYS_15",
+        "SYS_18"
+      ]
+    },
+    {
+      "name": "medical_agent_gate_1",
+      "file": "Agents/Medical_Agent.md",
+      "order": 4,
+      "input_schema": {
+        "research_sheet": "02_research_sheet.md"
+      },
+      "output_schema": {
+        "result": "enum[pass,fail]",
+        "violations": "array"
+      },
+      "output_files": [
+        "13_fact_check_log.md"
+      ],
+      "next": [
+        "thumbnail_agent"
+      ],
+      "failure_route": "research_agent",
+      "can_block_publish": true,
+      "reads": [
+        "SYS_02",
+        "SYS_09",
+        "SYS_11",
+        "SYS_15",
+        "SYS_18"
+      ]
+    },
+    {
+      "name": "thumbnail_agent",
+      "file": "Agents/Thumbnail_Agent.md",
+      "order": 5,
+      "input_schema": {
+        "topic_validation": "01_topic_validation.md",
+        "research_sheet": "02_research_sheet.md",
+        "medical_gate_1": "13_fact_check_log.md pass",
+        "winning_title": "project.json.anchor_title (required, immutable user-supplied title)"
+      },
+      "output_files": [
+        "04_thumbnail_concepts.md",
+        "11_thumbnail_prompt.md"
+      ],
+      "next": [
+        "script_agent"
+      ],
+      "failure_route": "thumbnail_agent",
+      "constraints": [
+        "apply_V1_V6"
+      ],
+      "reads": [
+        "SYS_06",
+        "SYS_09",
+        "SYS_15"
+      ]
+    },
+    {
+      "name": "script_agent",
+      "file": "Agents/Script_Agent.md",
+      "order": 6,
+      "input_schema": {
+        "topic_validation": "01_topic_validation.md",
+        "research_sheet": "02_research_sheet.md",
+        "thumbnail_concepts": "04_thumbnail_concepts.md",
+        "thumbnail_prompt": "11_thumbnail_prompt.md",
+        "winning_title": "project.json.anchor_title (required, immutable user-supplied title)"
+      },
+      "output_files": [
+        "05_script_outline.md",
+        "06_final_script.md"
+      ],
+      "next": [
+        "medical_agent_gate_2"
+      ],
+      "failure_route": "script_agent",
+      "constraints": [
+        "enforce_state_machine_invariants"
+      ],
+      "reads": [
+        "SYS_05",
+        "SYS_09",
+        "SYS_10",
+        "SYS_15"
+      ]
+    },
+    {
+      "name": "medical_agent_gate_2",
+      "file": "Agents/Medical_Agent.md",
+      "order": 7,
+      "input_schema": {
+        "research_sheet": "02_research_sheet.md",
+        "final_script": "06_final_script.md"
+      },
+      "output_schema": {
+        "result": "enum[pass,fail]",
+        "violations": "array"
+      },
+      "output_files": [
+        "13_fact_check_log.md"
+      ],
+      "next": [
+        "production_agent"
+      ],
+      "failure_route": "script_agent_or_research_agent",
+      "can_block_publish": true,
+      "reads": [
+        "SYS_09",
+        "SYS_10",
+        "SYS_15",
+        "SYS_18"
+      ]
+    },
+    {
+      "name": "production_agent",
+      "file": "Agents/Production_Agent.md",
+      "order": 8,
+      "input_schema": {
+        "final_script": "06_final_script.md",
+        "thumbnail_concepts": "04_thumbnail_concepts.md",
+        "thumbnail_prompt": "11_thumbnail_prompt.md",
+        "medical_gate_2": "13_fact_check_log.md pass"
+      },
+      "output_files": [
+        "07_production_sheet.csv",
+        "10_image_prompts.md",
+        "12_broll_prompts.md"
+      ],
+      "next": [
+        "seo_agent"
+      ],
+      "failure_route": "production_agent",
+      "reads": [
+        "SYS_02",
+        "SYS_06",
+        "SYS_10",
+        "SYS_15"
+      ]
+    },
+    {
+      "name": "seo_agent",
+      "file": "Agents/SEO_Agent.md",
+      "order": 9,
+      "input_schema": {
+        "research_sheet": "02_research_sheet.md",
+        "final_script": "06_final_script.md",
+        "production_sheet": "07_production_sheet.csv",
+        "winning_title": "project.json.anchor_title (required, immutable user-supplied title)"
+      },
+      "output_files": [
+        "08_youtube_metadata.md"
+      ],
+      "next": [
+        "final_qa"
+      ],
+      "failure_route": "seo_agent",
+      "reads": [
+        "SYS_04",
+        "SYS_06",
+        "SYS_09",
+        "SYS_15",
+        "SYS_16"
+      ]
+    }
+  ],
+  "non_file_stages": [
+    {
+      "name": "project_initialization",
+      "order": 1,
+      "output": "approved_channel_niche",
+      "next": "topic_generator_agent"
+    },
+    {
+      "name": "human_topic_selection",
+      "order": 1.75,
+      "input": "00_topic_ideas.md + 00_topic_ideas.csv",
+      "output": "selected_topic_id",
+      "required_value": "selected_topic_id",
+      "blocks": "outlier_agent",
+      "next": "outlier_agent"
+    },
+    {
+      "name": "final_qa",
+      "order": 10,
+      "input": "all_project_outputs",
+      "output_files": [
+        "09_qa_checklist.md"
+      ],
+      "failure_route": "specific_failed_agent"
+    },
+    {
+      "name": "publish_schedule_checklist",
+      "order": 11,
+      "input": "09_qa_checklist.md + 08_youtube_metadata.md",
+      "output": "publish_schedule_status"
+    },
+    {
+      "name": "project_summary",
+      "order": 12,
+      "input": "01-13 project outputs + publish_schedule_status",
+      "output_files": [
+        "14_project_summary.md"
+      ],
+      "reads": [
+        "SYS_11",
+        "SYS_15"
+      ]
+    }
+  ],
+  "workflow_validation": {
+    "topic_generator_before_outlier": true,
+    "required_before_topic_selection": [
+      "00_topic_ideas.md",
+      "00_topic_ideas.csv"
+    ],
+    "required_before_outlier_agent": [
+      "00_topic_ideas.md",
+      "00_topic_ideas.csv",
+      "selected_topic_id"
+    ],
+    "outlier_direct_raw_niche_input_allowed": false,
+    "responsibility_separation": {
+      "topic_generator_agent": [
+        "generates_multiple_candidate_topics",
+        "scores_and_ranks_topics",
+        "does_not_perform_final_outlier_validation",
+        "does_not_select_final_topic_automatically"
+      ],
+      "outlier_agent": [
+        "validates_the_human_selected_topic",
+        "checks_opportunity_and_outlier_evidence",
+        "creates_01_topic_validation_md",
+        "creates_01b_outlier_references_md"
+      ]
+    }
+  }
+}

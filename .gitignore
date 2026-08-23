@@ -1,0 +1,64 @@
+# ==============================
+# Senior Health AI - Git hygiene
+# ==============================
+
+# Secrets / local credentials
+.env
+.env.*
+!.env.example
+**/token.txt
+**/*secret*
+**/*credential*
+
+# Local Codex / agent runtime state
+.codex/
+.codex_child_home/
+.codex_tmp/
+.agents/
+
+# Python cache / virtual environments
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.venv/
+venv/
+env/
+
+# Runtime logs / temp outputs
+RunLogs/
+Run_Logs/
+Outputs/
+tmp*/
+New folder/
+*.log
+*.cache
+.broll_vision_cache.json
+Projects/*/.broll_vision_cache.json
+
+# Generated project content
+Projects/*
+!Projects/.gitkeep
+
+# Large/binary production artifacts
+*.zip
+*.7z
+*.rar
+*.tar
+*.gz
+*.mp4
+*.mov
+*.avi
+*.mkv
+*.webm
+*.wav
+*.mp3
+*.xlsx
+
+# OS/editor noise
+.DS_Store
+Thumbs.db
+desktop.ini
+.vscode/
+.idea/

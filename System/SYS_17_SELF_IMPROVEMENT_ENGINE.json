@@ -1,0 +1,22 @@
+{
+  "version": "1.0",
+  "objective": "Continuously improve content performance.",
+  "process": [
+    "Collect latest video metrics",
+    "Identify successful outliers",
+    "Detect weak-performing topics",
+    "Update title patterns",
+    "Update thumbnail patterns",
+    "Update hook patterns",
+    "Update retention techniques",
+    "Improve prompt library",
+    "Improve script framework",
+    "Store new learnings"
+  ],
+  "learning_rules": {
+    "repeat_successful_patterns": true,
+    "remove_low_ctr_patterns": true,
+    "prioritize_new_outliers": true,
+    "keep_medical_accuracy": true
+  }
+}

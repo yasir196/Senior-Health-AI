@@ -1,0 +1,54 @@
+{
+  "module": "prompt_library",
+  "version": "1.0",
+  "dedup_policy": "one_canonical_prompt_per_category",
+  "prompts": [
+    {
+      "id": "P_TOPIC",
+      "category": "topic_discovery",
+      "template": "Scan Senior Health subtopic '{subtopic}'. Return topics as a JSON array matching the SYS_08 whitespace schema. For each item include vi, ever, ctr, comp, computed opportunity, and why_missed. Exclude any topic with competition >= 7 unless a relief or curiosity anchor is viable.",
+      "reads": ["SYS_08"]
+    },
+    {
+      "id": "P_RESEARCH",
+      "category": "research",
+      "template": "For claim '{claim}', return JSON {claim, citation:{tier,source}, mechanism, contraindications[]}. Use SYS_09 tiers 1-4 only. If unsupportable, set citation to null and flag 'CUT'.",
+      "reads": ["SYS_09"]
+    },
+    {
+      "id": "P_TITLE",
+      "category": "title",
+      "template": "Generate 5 titles for '{topic}' / '{payoff}' with anchor '{anchor}'. Apply SYS_04 template_registry and generation rules TR1-TR7. Return JSON titles[] with template_id and SYS_14 title_score. Reject implausible numbers and full disclosure.",
+      "reads": ["SYS_04", "SYS_14"]
+    },
+    {
+      "id": "P_THUMB",
+      "category": "thumbnail",
+      "template": "Produce a SYS_06 spec plus 5 concepts for '{topic}' with layout_class '{class}'. Enforce visual rules V1-V6. Return JSON {spec, concepts[], dominant_word}.",
+      "reads": ["SYS_06"]
+    },
+    {
+      "id": "P_HOOK",
+      "category": "hook",
+      "template": "Write a 60-second hook for '{topic}' using the SYS_05 beat_schema. Opening strategy '{O_id}'. Enforce hook rules HR1-HR4. Return per-beat text keyed by beat number.",
+      "reads": ["SYS_05"]
+    },
+    {
+      "id": "P_SCRIPT",
+      "category": "script",
+      "template": "Write a full script for '{title}' using the SYS_10 state machine. Enforce invariants I1-I6. Insert one SYS_09 tier 1-4 citation and a clinician caveat. Maintain a loop every 60-90 seconds and reveal items in ascending importance. Return JSON {script, loop_map[]}.",
+      "reads": ["SYS_09", "SYS_10"]
+    },
+    {
+      "id": "P_FACTCHECK",
+      "category": "factcheck",
+      "template": "Audit this script against SYS_09 rules M1-M8 and the policy_compliance_check. Return JSON {result, violations[{rule_id, location}]}. Set result to 'fail' if any block-severity rule is violated.",
+      "reads": ["SYS_09"]
+    }
+  ],
+  "governance": {
+    "reference_by_rule_id": true,
+    "rationale": "Prompts reference rule IDs rather than restating rules so upstream rule changes propagate automatically.",
+    "add_new_prompt_when": "a genuinely new task category emerges"
+  }
+}

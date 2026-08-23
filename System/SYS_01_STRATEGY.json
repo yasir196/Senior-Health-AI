@@ -1,0 +1,97 @@
+{
+  "module": "audience_and_strategy_db",
+  "version": "1.0",
+  "master_formula": {
+    "expression": "ProvenFormat AND UnderservedTopic AND (fear OR relief OR curiosity OR hope) AND WithheldPayoff AND OneHeroObject",
+    "required_factors": [
+      "proven_format",
+      "underserved_topic",
+      "emotional_anchor",
+      "withheld_payoff",
+      "hero_object"
+    ]
+  },
+  "audience_segments": [
+    {
+      "id": "primary",
+      "age": "60-80",
+      "traits": [
+        "health_anxious",
+        "chronic_condition",
+        "distrust_rushed_doctors",
+        "independence_motivated"
+      ],
+      "priority": 1
+    },
+    {
+      "id": "prevention",
+      "age": "50-59",
+      "traits": [
+        "proactive",
+        "early_symptom_curious"
+      ],
+      "priority": 2
+    },
+    {
+      "id": "caregiver",
+      "age": "any",
+      "traits": [
+        "researching_for_parent"
+      ],
+      "priority": 2
+    },
+    {
+      "id": "elder",
+      "age": "80+",
+      "traits": [
+        "independence_preservation"
+      ],
+      "priority": 3
+    }
+  ],
+  "success_metrics": [
+    {
+      "metric": "ctr",
+      "validates": "packaging",
+      "target_min": 0.06,
+      "unit": "ratio"
+    },
+    {
+      "metric": "avg_view_duration_pct",
+      "validates": "hook_and_script",
+      "target_min": 0.45,
+      "unit": "ratio"
+    },
+    {
+      "metric": "returning_viewer_rate",
+      "validates": "trust_asset",
+      "target_min": 0.30,
+      "unit": "ratio"
+    },
+    {
+      "metric": "vph_48h",
+      "validates": "outlier_potential",
+      "target_min": null,
+      "unit": "views_per_hour"
+    },
+    {
+      "metric": "watch_time_per_cluster",
+      "validates": "portfolio_allocation",
+      "target_min": null,
+      "unit": "seconds"
+    },
+    {
+      "metric": "policy_status",
+      "validates": "survival",
+      "target": "green",
+      "unit": "enum"
+    }
+  ],
+  "governing_principles": [
+    "format_discipline_over_improvisation",
+    "whitespace_over_imitation",
+    "rotate_emotional_anchors",
+    "accuracy_is_non_negotiable_growth_asset",
+    "packaging_must_match_content"
+  ]
+}

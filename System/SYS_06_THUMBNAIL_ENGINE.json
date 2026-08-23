@@ -1,0 +1,882 @@
+{
+  "module": "thumbnail_engine",
+  "version": "2.5",
+  "purpose": "CTR-first professional YouTube thumbnail packaging, visual pattern intelligence, and thumbnail text intelligence system for Senior Health AI videos while preserving medical integrity.",
+  "required_project_inputs": [
+    "Projects/<topic_slug>/01_topic_validation.md",
+    "Projects/<topic_slug>/02_research_sheet.md",
+    "Projects/<topic_slug>/project.json (anchor_title)"
+  ],
+  "required_outputs": {
+    "canonical_thumbnail_package": "Projects/<topic_slug>/04_thumbnail_concepts.md",
+    "optional_prompt_only_file": "Projects/<topic_slug>/11_thumbnail_prompt.md"
+  },
+  "concept_generation": {
+    "required_concept_count": 10,
+    "visual_pattern_analysis_required": true,
+    "thumbnail_text_intelligence_required": true,
+    "ctr_first_text_packaging_required": true,
+    "text_options_per_concept": 3,
+    "competitor_similarity_estimate_required": true,
+    "unique_concept_requirement": "Each concept must vary composition, text family, text wording, signal cue, facial expression, color emphasis, curiosity route, or title-overlap strategy.",
+    "winner_requirement": "One winning thumbnail must be selected after all ten concepts are scored.",
+    "finalists_required": 3,
+    "final_prompt_required": true
+  },
+  "visual_pattern_intelligence": {
+    "purpose": "Analyze likely top-performing and common competitor thumbnail patterns for the topic before generating concepts, then deliberately create concepts that preserve CTR signals while avoiding clone-like similarity.",
+    "analysis_timing": "before_concept_generation",
+    "live_audit_policy": "If live competitor thumbnails or search results are not provided, infer common competitor layouts from the topic, title, content DNA, thumbnail blueprints, and prior channel patterns. Label the result as an estimated visual-pattern analysis.",
+    "required_analysis_fields": [
+      "topic_visual_category",
+      "likely_top_performing_styles",
+      "common_competitor_layouts",
+      "overused_visual_cliches",
+      "safe_differentiation_opportunities",
+      "recommended_visual_direction"
+    ],
+    "common_competitor_layout_types": [
+      {
+        "id": "C1",
+        "name": "doctor_food_warning",
+        "description": "Doctor or presenter beside a food plate with a red warning cue and large caution text."
+      },
+      {
+        "id": "C2",
+        "name": "organ_closeup_alarm",
+        "description": "Large organ illustration, red circle, alarmed face, and fear-heavy wording."
+      },
+      {
+        "id": "C3",
+        "name": "food_collage_list",
+        "description": "Multiple foods arranged as a crowded list or collage with numbers."
+      },
+      {
+        "id": "C4",
+        "name": "fake_scan_or_lab_result",
+        "description": "Medical chart, scan, or lab-style result used as proof or urgency."
+      },
+      {
+        "id": "C5",
+        "name": "green_check_red_x_split",
+        "description": "Split-screen safe versus unsafe comparison with check and X symbols."
+      },
+      {
+        "id": "C6",
+        "name": "grocery_basket_confusion",
+        "description": "Senior shopper or grocery basket with many food items and uncertain expression."
+      }
+    ],
+    "similarity_scale": {
+      "low": "Concept uses a clearly different composition, hero-object relationship, eye path, or emotional mechanism from common competitor layouts.",
+      "medium": "Concept uses a familiar layout but adds a meaningful differentiator in framing, cue, object choice, or visual promise.",
+      "high": "Concept strongly resembles a common competitor layout and should be penalized unless it has exceptional clarity and safety."
+    },
+    "differentiation_rules": [
+      "Avoid competitor-clone layouts unless a distinct medical-safety or curiosity improvement is present.",
+      "Prefer one clear hero object over crowded food collages.",
+      "Prefer real food and human expression over fake medical proof visuals.",
+      "Use caution, question, or decision-point visuals instead of disease-outcome visuals.",
+      "The winning concept must include a short explanation of why it stands out from competitors."
+    ]
+  },
+  "thumbnail_text_intelligence": {
+    "purpose": "Maximize thumbnail text curiosity and click-through rate while ensuring text is specific to the viewer problem, title gap, research promise, and visual concept rather than generic or interchangeable.",
+    "analysis_timing": "before_concept_generation",
+    "required_pre_generation_fields": [
+      "primary_viewer_problem",
+      "primary_viewer_emotion",
+      "primary_viewer_question",
+      "missing_piece",
+      "internal_question_created",
+      "primary_visual_hook",
+      "emotional_trigger",
+      "title_thumbnail_information_gap"
+    ],
+    "one_clear_idea_rule": [
+      "missing_piece",
+      "challenge",
+      "warning",
+      "comparison",
+      "question",
+      "timing",
+      "contradiction",
+      "first_step",
+      "evidence_gap"
+    ],
+    "ctr_optimization_priorities": [
+      "viewer_psychology",
+      "information_gap",
+      "emotional_trigger",
+      "mobile_readability",
+      "medical_safety"
+    ],
+    "research_integrity_policy": "Research integrity is a gate. Among medically safe options, select the highest ethical CTR option.",
+    "complement_title_do_not_repeat": true,
+    "generic_text_restriction": {
+      "avoid_generic_phrases": [
+        "ADD THIS",
+        "DO THIS",
+        "TRY THIS",
+        "WATCH THIS",
+        "STOP THIS",
+        "THIS WORKS",
+        "SECRET",
+        "AMAZING",
+        "MUST SEE"
+      ],
+      "allowed_only_if": "The concept-specific visual gives the phrase a unique meaning and the agent explains why it is justified.",
+      "generic_phrase_requires_justification": true
+    },
+    "text_families": [
+      {
+        "id": "missing_piece",
+        "label": "Missing Piece",
+        "examples": [
+          "NOT ENOUGH",
+          "MOST MISS THIS",
+          "THE MISSING PIECE"
+        ]
+      },
+      {
+        "id": "challenge",
+        "label": "Challenge",
+        "examples": [
+          "CAN YOU?",
+          "STILL EASY?",
+          "PASS THIS?"
+        ]
+      },
+      {
+        "id": "warning",
+        "label": "Warning",
+        "examples": [
+          "DON'T IGNORE THIS",
+          "WARNING SIGN",
+          "CHECK THIS FIRST"
+        ]
+      },
+      {
+        "id": "comparison",
+        "label": "Comparison",
+        "examples": [
+          "THIS, NOT THAT",
+          "MORE THAN THIS",
+          "WHICH ONE?"
+        ]
+      },
+      {
+        "id": "question",
+        "label": "Question",
+        "examples": [
+          "CAN YOU?",
+          "WHAT CHANGED?",
+          "WHY HARDER?"
+        ]
+      },
+      {
+        "id": "timing",
+        "label": "Timing",
+        "examples": [
+          "BEFORE BED",
+          "TOO LATE?",
+          "MORNING MISTAKE"
+        ]
+      },
+      {
+        "id": "contradiction",
+        "label": "Contradiction",
+        "examples": [
+          "NOT WHAT YOU THINK",
+          "THAT'S NOT ENOUGH",
+          "THE REAL REASON"
+        ]
+      },
+      {
+        "id": "first_step",
+        "label": "First Step",
+        "examples": [
+          "START HERE",
+          "DO THIS FIRST",
+          "ONE SMALL STEP"
+        ]
+      },
+      {
+        "id": "evidence",
+        "label": "Evidence",
+        "examples": [
+          "RESEARCH SAYS",
+          "WHAT HELPS?",
+          "THE EVIDENCE"
+        ]
+      }
+    ],
+    "do_not_reuse_examples_mechanically": true,
+    "minimum_distinct_text_families_across_10_concepts": 5,
+    "text_options_per_concept": 3,
+    "text_options": [
+      "option_a",
+      "option_b",
+      "option_c"
+    ],
+    "options_must_be_different": true,
+    "options_should_use_different_text_families_when_possible": true,
+    "per_text_option_scoring": {
+      "score_range": [
+        0,
+        10
+      ],
+      "overall_ctr_score_range": [
+        0,
+        100
+      ],
+      "categories": [
+        "research_integrity",
+        "medical_safety",
+        "mobile_readability",
+        "information_gap",
+        "emotional_trigger",
+        "internal_question",
+        "self_identification",
+        "overall_ctr_score"
+      ],
+      "internal_question_rule": "Every text must naturally create an internal question. If no internal question exists, lower the CTR score.",
+      "self_identification_rule": "Evaluate whether the viewer imagines themselves in the situation. Score 0-10."
+    },
+    "per_concept_required_fields": [
+      "viewer_problem",
+      "viewer_emotion",
+      "viewer_question",
+      "missing_piece",
+      "internal_question_created",
+      "visual_hook",
+      "text_option_a",
+      "text_option_b",
+      "text_option_c",
+      "recommended_winner",
+      "why_it_won",
+      "ctr_score",
+      "medical_safety",
+      "interchangeability_risk"
+    ],
+    "thumbnail_curiosity_score_range": [
+      0,
+      10
+    ],
+    "mobile_readability_score_range": [
+      0,
+      10
+    ],
+    "medical_safety_risk_values": [
+      "LOW",
+      "MEDIUM",
+      "HIGH"
+    ],
+    "interchangeability_risk_values": [
+      "LOW",
+      "MEDIUM",
+      "HIGH"
+    ],
+    "interchangeability_test": {
+      "question": "Could this same text fit ten unrelated senior-health videos?",
+      "fail_if_yes_without_unique_visual_justification": true
+    }
+  },
+  "text_overlay_specification": {
+    "required_for_selected_winner": true,
+    "required_section_heading": "Text Overlay Specification",
+    "purpose": "Give Production_Agent a complete, production-ready overlay treatment for the winning thumbnail text without requiring it to infer typography, placement, or mobile-safe layout.",
+    "required_fields": [
+      "final_overlay_text",
+      "line_breaks",
+      "text_placement",
+      "alignment",
+      "font_style",
+      "font_weight",
+      "font_family_recommendation",
+      "uppercase_lowercase",
+      "primary_text_color",
+      "highlight_color",
+      "outline_color",
+      "outline_thickness",
+      "drop_shadow_recommendation",
+      "maximum_text_width",
+      "maximum_text_height",
+      "safe_margins",
+      "mobile_readability_notes",
+      "do_not_overlap_zones",
+      "visual_hierarchy",
+      "contrast_recommendation"
+    ],
+    "style_preferences": [
+      "bold_condensed_sans_serif_when_suitable",
+      "all_caps_when_suitable",
+      "white_and_yellow_emphasis_when_suitable",
+      "black_outline_when_suitable",
+      "soft_drop_shadow_when_suitable",
+      "high_contrast",
+      "maximum_mobile_readability"
+    ],
+    "style_selection_policy": "Do not hardcode one universal overlay style. Choose typography, colors, line breaks, placement, and hierarchy based on the winning concept, visual hook, selected thumbnail text, title overlap guidance, presenter position, hero object, and mobile readability.",
+    "do_not_overlap_zones": [
+      "presenter_face",
+      "presenter_hands",
+      "hero_object_or_daily_life_action",
+      "signal_arrow_or_highlight",
+      "medical_safety_cue",
+      "reference_identity_critical_facial_features"
+    ],
+    "mobile_readability_requirements": [
+      "text_readable_at_small_feed_size",
+      "short_words_are_prioritized",
+      "line_breaks_keep_words_large",
+      "outline_and_shadow_separate_text_from_background",
+      "safe_margins_keep_text_inside_frame"
+    ]
+  },
+  "reference_presenter_identity": {
+    "enabled_when_user_supplies_reference_image": true,
+    "reference_type": "identity_only_not_composition",
+    "preserve_only": [
+      "face",
+      "facial_proportions",
+      "hairstyle",
+      "beard",
+      "eyebrows",
+      "skin_tone",
+      "age_appearance",
+      "identity"
+    ],
+    "do_not_preserve": [
+      "clothing",
+      "accessories",
+      "microphone",
+      "headphones",
+      "glasses",
+      "jewelry",
+      "background",
+      "lighting",
+      "camera_framing",
+      "body_pose",
+      "hand_position",
+      "expression",
+      "image_composition"
+    ],
+    "wardrobe_policy": {
+      "choose_clothing_to_match_project": true,
+      "never_inherit_reference_clothing_unless_explicitly_requested": true,
+      "health_educator_options": [
+        "navy blazer",
+        "polo shirt",
+        "casual shirt"
+      ],
+      "medical_explainer_options": [
+        "blue scrubs only if the reference already represents that persona and the project allows that persona"
+      ],
+      "professional_options": [
+        "business casual"
+      ]
+    },
+    "accessory_policy": {
+      "automatically_remove_unrelated_objects": true,
+      "never_carry_over_unless_concept_requires": [
+        "podcast_microphone",
+        "headphones",
+        "desk",
+        "computer",
+        "boom_arm",
+        "keyboard",
+        "coffee_mug",
+        "office_chair"
+      ]
+    },
+    "required_final_prompt_wording": [
+      "Use the uploaded reference image only as the facial identity reference.",
+      "Recreate the presenter for this thumbnail.",
+      "Keep the face identical.",
+      "Redesign clothing, pose, expression, camera angle, lighting, background, and accessories to match the concept."
+    ],
+    "must_not_allow": [
+      "different_face",
+      "invented_presenter",
+      "reference_composition_copy",
+      "reference_clothing_copy_without_justification",
+      "reference_accessories_copy_without_justification"
+    ]
+  },
+  "master_recipe": {
+    "background": "dark_high_contrast",
+    "text_words_min": 2,
+    "text_words_max": 4,
+    "face_position": "right_third_preferred",
+    "hero_objects": 1,
+    "signal_icons": 1,
+    "required_eye_path": [
+      "face",
+      "food",
+      "arrow",
+      "text"
+    ],
+    "clutter_policy": "single_focal_story_no_crowded_backgrounds_no_tiny_labels"
+  },
+  "layout_registry": [
+    {
+      "id": "L1",
+      "name": "object_verb_confident_face",
+      "use": "relief_food",
+      "components": [
+        "glossy_food",
+        "red_or_yellow_power_text",
+        "directional_cue",
+        "expressive_presenter"
+      ]
+    },
+    {
+      "id": "L2",
+      "name": "bodypart_circle_alarmed_face",
+      "use": "diagnostic",
+      "components": [
+        "extreme_closeup",
+        "red_ring",
+        "concerned_face",
+        "minimal_text"
+      ]
+    },
+    {
+      "id": "L3",
+      "name": "pillbox_bluebanner_directgaze",
+      "use": "named_drug",
+      "components": [
+        "oversized_drug_context",
+        "blue_trust_band",
+        "direct_gaze",
+        "strict_medical_safety"
+      ]
+    },
+    {
+      "id": "L4",
+      "name": "hero_presenter_claim",
+      "use": "transformation",
+      "components": [
+        "vigorous_senior_or_doctor",
+        "yellow_claim",
+        "thumbs_up_or_check",
+        "clear_emotion"
+      ]
+    },
+    {
+      "id": "L5",
+      "name": "food_question_gap",
+      "use": "curiosity_food",
+      "components": [
+        "single_food_hero",
+        "question_text",
+        "curious_face",
+        "arrow_or_circle"
+      ]
+    },
+    {
+      "id": "L6",
+      "name": "safe_caution_food",
+      "use": "safety_caution",
+      "components": [
+        "food_hero",
+        "doctor_stop_or_ask_first_gesture",
+        "warning_color",
+        "non_alarmist_caveat_signal"
+      ]
+    }
+  ],
+  "layout_selector": {
+    "relief_food": "L1",
+    "diagnostic": "L2",
+    "named_drug": "L3",
+    "transformation": "L4",
+    "curiosity_food": "L5",
+    "safety_caution": "L6"
+  },
+  "color_function_map": {
+    "red": "danger_words_circles_arrows_or_stop_cues",
+    "yellow": "primary_readable_subject_text",
+    "green": "safe_signal_check_or_allowed_choice",
+    "blue": "trust_authority_band",
+    "dark": "contrast_base",
+    "white": "doctor_coat_or_text_separation"
+  },
+  "scoring_model": {
+    "score_range_per_category": [
+      0,
+      10
+    ],
+    "total_score_max": 120,
+    "normalized_score_max": 100,
+    "categories": [
+      {
+        "id": "emotional_trigger",
+        "label": "Emotional Trigger",
+        "max_points": 10,
+        "definition": "Strength of immediate emotional response such as curiosity, relief, concern, surprise, or hope without unsupported fear."
+      },
+      {
+        "id": "mobile_visibility",
+        "label": "Mobile Visibility",
+        "max_points": 10,
+        "definition": "Whether the face, food, signal cue, and text remain clear at small YouTube feed size."
+      },
+      {
+        "id": "curiosity_gap",
+        "label": "Curiosity Gap",
+        "max_points": 10,
+        "definition": "How strongly the image creates an unresolved question without revealing the full payoff."
+      },
+      {
+        "id": "information_gap",
+        "label": "Information Gap",
+        "max_points": 10,
+        "definition": "How well the thumbnail adds a missing visual question or contrast instead of duplicating the title."
+      },
+      {
+        "id": "food_visibility",
+        "label": "Food Visibility",
+        "max_points": 10,
+        "definition": "For food topics, whether the food hero object is instantly recognizable, appetizing, and dominant. For non-food topics, score the equivalent hero-object clarity."
+      },
+      {
+        "id": "human_face",
+        "label": "Human Face",
+        "max_points": 10,
+        "definition": "Presence, size, expression, eye direction, and emotional clarity of a human face."
+      },
+      {
+        "id": "text_readability",
+        "label": "Text Readability",
+        "max_points": 10,
+        "definition": "Large, short, high-contrast text, usually 2 to 5 words, readable at small size."
+      },
+      {
+        "id": "color_contrast",
+        "label": "Color Contrast",
+        "max_points": 10,
+        "definition": "Contrast between background, face, food, text, and signal cue."
+      },
+      {
+        "id": "competition_difference",
+        "label": "Competition Difference",
+        "max_points": 10,
+        "definition": "How clearly the concept avoids blending into common competitor thumbnails or saturated visual tropes."
+      },
+      {
+        "id": "medical_safety",
+        "label": "Medical Safety",
+        "max_points": 10,
+        "definition": "Whether the visual avoids cure claims, fake medical results, fear exaggeration, medication-change implications, and unsupported treatment imagery."
+      },
+      {
+        "id": "visual_uniqueness",
+        "label": "Visual Uniqueness",
+        "max_points": 10,
+        "definition": "How strongly the concept avoids common competitor layouts while remaining clear, relevant, and on-brand."
+      },
+      {
+        "id": "mobile_eye_catch",
+        "label": "Mobile Eye-Catch",
+        "max_points": 10,
+        "definition": "How strongly the thumbnail grabs attention in a fast mobile feed through silhouette, focal contrast, face readability, text punch, and instant visual question."
+      }
+    ],
+    "calculation": "raw_total_score = emotional_trigger + mobile_visibility + curiosity_gap + information_gap + food_visibility + human_face + text_readability + color_contrast + competition_difference + medical_safety + visual_uniqueness + mobile_eye_catch; normalized_score = round((raw_total_score / 120) * 100)",
+    "winner_minimums": {
+      "medical_safety": 7,
+      "mobile_visibility": 7,
+      "text_readability": 7,
+      "human_face": 7,
+      "visual_uniqueness": 7,
+      "mobile_eye_catch": 7
+    }
+  },
+  "validation_rules": [
+    {
+      "id": "V1",
+      "rule": "mobile_readability_at_small_size",
+      "severity": "block",
+      "pass_condition": "main food or hero object, face, signal cue, and thumbnail text remain readable at small feed size"
+    },
+    {
+      "id": "V2",
+      "rule": "eye_path_face_food_arrow_text",
+      "severity": "block",
+      "pass_condition": "composition guides the viewer from Face to Food to Arrow to Text"
+    },
+    {
+      "id": "V3",
+      "rule": "avoid_clutter",
+      "severity": "block",
+      "pass_condition": "single visual story with no crowded backgrounds, excess icons, tiny labels, or multiple competing focal points"
+    },
+    {
+      "id": "V4",
+      "rule": "penalize_competitor_similarity",
+      "severity": "warn",
+      "pass_condition": "concept has a clear differentiator from common competitor thumbnails"
+    },
+    {
+      "id": "V5",
+      "rule": "minimize_title_thumbnail_information_overlap",
+      "severity": "warn",
+      "pass_condition": "thumbnail complements title and does not repeat more than 70 percent of the title or title keyword information unless justified by search intent"
+    },
+    {
+      "id": "V6",
+      "rule": "exactly_one_recognizable_hero_object",
+      "severity": "block",
+      "pass_condition": "one food, body part, object, or visual class dominates the concept"
+    },
+    {
+      "id": "V7",
+      "rule": "human_face_present",
+      "severity": "block",
+      "pass_condition": "a clear expressive human face is present unless a documented topic-specific exception exists"
+    },
+    {
+      "id": "V8",
+      "rule": "expression_never_neutral",
+      "severity": "block",
+      "pass_condition": "face shows clear curiosity, concern, relief, surprise, or confidence"
+    },
+    {
+      "id": "V9",
+      "rule": "short_readable_high_contrast_text",
+      "severity": "block",
+      "pass_condition": "text is short, high contrast, and usually 2 to 5 words"
+    },
+    {
+      "id": "V10",
+      "rule": "medical_visual_safety",
+      "severity": "block",
+      "pass_condition": "no cure symbols, fake before-after numbers, fake medical results, medication-change implication, frightening hospital imagery, or guaranteed outcome"
+    },
+    {
+      "id": "V11",
+      "rule": "visual_uniqueness_threshold",
+      "severity": "warn",
+      "pass_condition": "concept has a clear differentiator from common competitor layouts and scores at least 7 in Visual Uniqueness to be eligible for winner selection"
+    },
+    {
+      "id": "V12",
+      "rule": "mobile_eye_catch_threshold",
+      "severity": "warn",
+      "pass_condition": "concept has a strong mobile-feed hook and scores at least 7 in Mobile Eye-Catch to be eligible for winner selection"
+    },
+    {
+      "id": "V13",
+      "rule": "competitor_similarity_estimated",
+      "severity": "block",
+      "pass_condition": "each concept includes a Low, Medium, or High visual similarity estimate against common competitor layouts, with a short reason"
+    },
+    {
+      "id": "V14",
+      "rule": "thumbnail_text_intelligence_fields_present",
+      "severity": "block",
+      "pass_condition": "pre-generation diagnosis and every per-concept text intelligence field are present"
+    },
+    {
+      "id": "V15",
+      "rule": "generic_text_requires_justification",
+      "severity": "block",
+      "pass_condition": "generic phrases such as ADD THIS, DO THIS, TRY THIS, WATCH THIS, STOP THIS, THIS WORKS, SECRET, AMAZING, or MUST SEE are absent unless a concept-specific justification is documented"
+    },
+    {
+      "id": "V16",
+      "rule": "thumbnail_text_does_not_repeat_title",
+      "severity": "block",
+      "pass_condition": "thumbnail text does not repeat the selected title's main wording or reveal the same core information"
+    },
+    {
+      "id": "V17",
+      "rule": "thumbnail_text_four_words_or_fewer",
+      "severity": "block",
+      "pass_condition": "thumbnail text is 2 to 4 words and readable on mobile"
+    },
+    {
+      "id": "V18",
+      "rule": "thumbnail_text_medical_safety",
+      "severity": "block",
+      "pass_condition": "thumbnail text does not imply cure, guaranteed prevention, reversal, universal safety, diagnosis, or treatment replacement"
+    },
+    {
+      "id": "V19",
+      "rule": "interchangeability_risk_not_high",
+      "severity": "block",
+      "pass_condition": "no concept has HIGH interchangeability risk; revise generic or reusable text before scoring finalists"
+    },
+    {
+      "id": "V20",
+      "rule": "minimum_text_family_diversity",
+      "severity": "block",
+      "pass_condition": "at least 5 distinct thumbnail text families are explored across the 10 concepts"
+    },
+    {
+      "id": "V21",
+      "rule": "three_text_options_per_concept",
+      "severity": "block",
+      "pass_condition": "every concept includes Option A, Option B, and Option C, and all three options are different"
+    },
+    {
+      "id": "V22",
+      "rule": "text_option_ctr_scoring_complete",
+      "severity": "block",
+      "pass_condition": "each text option is scored for Research Integrity, Medical Safety, Mobile Readability, Information Gap, Emotional Trigger, Internal Question, Self Identification, and Overall CTR Score"
+    },
+    {
+      "id": "V23",
+      "rule": "winning_text_highest_valid_ctr",
+      "severity": "block",
+      "pass_condition": "the recommended text winner for each concept does not have a lower Overall CTR Score than another medically valid option for that concept"
+    },
+    {
+      "id": "V24",
+      "rule": "generic_wording_not_selected",
+      "severity": "block",
+      "pass_condition": "generic wording such as ADD THIS, DO THIS, WATCH THIS, TRY THIS, or THIS WORKS is not selected as the winning text"
+    },
+    {
+      "id": "V25",
+      "rule": "internal_question_present_or_ctr_penalized",
+      "severity": "block",
+      "pass_condition": "every text naturally creates an internal question; if not, it is not selected and its CTR score is lowered"
+    },
+    {
+      "id": "V26",
+      "rule": "self_identification_scored",
+      "severity": "block",
+      "pass_condition": "every text option includes a Self Identification score from 0 to 10"
+    },
+    {
+      "id": "V27",
+      "rule": "reference_presenter_identity_only",
+      "severity": "block",
+      "pass_condition": "when a reference presenter image is available, the final prompt states that it is used only as the facial identity reference and that the presenter is recreated for the thumbnail concept"
+    },
+    {
+      "id": "V28",
+      "rule": "reference_composition_not_copied",
+      "severity": "block",
+      "pass_condition": "final prompt redesigns clothing, pose, expression, camera angle, lighting, background, and accessories for the concept instead of copying the reference composition"
+    },
+    {
+      "id": "V29",
+      "rule": "reference_accessories_removed",
+      "severity": "block",
+      "pass_condition": "podcast equipment, headphones, desk, computer, boom arm, keyboard, coffee mug, office chair, and unrelated reference accessories are excluded unless the concept explicitly requires them"
+    },
+    {
+      "id": "V30",
+      "rule": "presenter_identity_preserved",
+      "severity": "block",
+      "pass_condition": "face, facial proportions, hairstyle, beard if present, eyebrows, skin tone, age appearance, and identity are preserved"
+    },
+    {
+      "id": "V31",
+      "rule": "complete_text_overlay_specification",
+      "severity": "block",
+      "pass_condition": "the selected winning concept and final prompt include a Text Overlay Specification with final overlay text, line breaks, text placement, alignment, font style, font weight, font family recommendation, uppercase/lowercase, primary text color, highlight color if applicable, outline color, outline thickness, drop shadow recommendation, maximum text width, maximum text height, safe margins, mobile readability notes, do-not-overlap zones, visual hierarchy, and contrast recommendation"
+    }
+  ],
+  "information_overlap_policy": {
+    "goal": "Minimize title and thumbnail information overlap while preserving search clarity.",
+    "penalize_when": "thumbnail repeats more than 70 percent of the title or title repeats more than 70 percent of thumbnail text and hero information",
+    "reward_when": "thumbnail adds a visual question, emotional cue, or contrast that the title does not already state",
+    "examples": [
+      {
+        "title": "Eat 2 Kiwis Before Bed After 60... What Happens?",
+        "weak_thumbnail_text": "EAT 2 KIWIS BEFORE BED",
+        "better_thumbnail_text": "2 KIWIS?",
+        "reason": "The improved thumbnail keeps the hero object and curiosity without duplicating the full title."
+      }
+    ]
+  },
+  "output_contract": {
+    "concept_table_required": true,
+    "concept_count": 10,
+    "top_finalists": 3,
+    "winner_required": true,
+    "winning_prompt_required": true,
+    "canonical_file": "04_thumbnail_concepts.md",
+    "canonical_file_must_include": [
+      "thumbnail_text_intelligence_diagnosis",
+      "visual_pattern_intelligence_analysis",
+      "common_competitor_layout_map",
+      "all_concepts",
+      "text_intelligence_fields_for_every_concept",
+      "text_option_a_b_c_for_every_concept",
+      "text_option_ctr_scoring",
+      "internal_question_scores",
+      "self_identification_scores",
+      "recommended_text_winner_per_concept",
+      "why_recommended_text_won",
+      "all_scores",
+      "visual_uniqueness_scores",
+      "mobile_eye_catch_scores",
+      "thumbnail_curiosity_scores",
+      "mobile_readability_scores",
+      "medical_safety_risk",
+      "interchangeability_risk",
+      "competitor_similarity_estimates",
+      "top_3_finalists",
+      "recommended_winner",
+      "safest_alternative",
+      "highest_upside_experiment",
+      "final_title_thumbnail_pairing",
+      "selected_winner",
+      "why_winner_stands_out_from_competitors",
+      "text_overlay_specification",
+      "production_ready_ai_image_prompt"
+    ],
+    "prompt_file": "11_thumbnail_prompt.md",
+    "prompt_file_must_include": [
+      "winning_concept",
+      "selected_title",
+      "selected_thumbnail_text",
+      "reference_presenter",
+      "final_image_prompt",
+      "negative_prompt",
+      "layout_notes",
+      "text_overlay_specification",
+      "mobile_readability_notes",
+      "medical_safety_notes",
+      "information_gap_explanation"
+    ]
+  },
+  "prohibited_visuals": [
+    "fake_medical_numbers",
+    "fake_before_after_results",
+    "cure_symbols",
+    "guaranteed_outcome_text",
+    "medication_change_imagery_without_medical_approval",
+    "frightening_hospital_scene",
+    "crowded_multi_object_layout",
+    "tiny_unreadable_text",
+    "competitor_clone_layout",
+    "generic_interchangeable_thumbnail_text",
+    "generic_winning_thumbnail_text",
+    "single_text_option_only",
+    "winning_text_lower_ctr_than_alternative",
+    "missing_internal_question_score",
+    "missing_self_identification_score",
+    "thumbnail_text_that_repeats_title",
+    "thumbnail_text_longer_than_4_words",
+    "podcast_equipment_from_reference",
+    "office_background_from_reference",
+    "unrelated_reference_accessories",
+    "reference_clothing_copied_without_justification",
+    "reference_composition_copied",
+    "presenter_identity_changed"
+  ],
+  "winning_title_contract": {
+    "source": "Projects/<topic_slug>/project.json.anchor_title",
+    "authority": "immutable_user_supplied_winning_title",
+    "must_use_exactly": true,
+    "generation_or_rewrite_allowed": false,
+    "selected_title_field_rule": "Every selected_title/final_title_thumbnail_pairing field must use the exact project.json.anchor_title."
+  }
+}

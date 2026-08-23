@@ -1,0 +1,13 @@
+{
+  "active_timeline_id": "9ee01b59-cbbe-52ab-9180-f0b99ec2d765",
+  "draft_id": "f9a58e50-3123-5bfc-b81d-28dd04a81d8d",
+  "timelines": [
+    {
+      "duration": 8000000,
+      "id": "9ee01b59-cbbe-52ab-9180-f0b99ec2d765",
+      "name": "Project",
+      "path": "Timelines/9ee01b59-cbbe-52ab-9180-f0b99ec2d765/draft_content.json"
+    }
+  ],
+  "version": 1
+}

@@ -1,0 +1,74 @@
+{
+  "version": "1.0",
+  "system_name": "Self-Improvement Recommendation Engine",
+  "purpose": "Convert telemetry findings into advisory recommendations without automatically modifying agents, workflow files, medical rules, or project outputs.",
+  "operating_mode": "advisory_only",
+  "allowed_output": "Analytics/improvement_suggestions.md",
+  "forbidden_actions": [
+    "automatically edit production agents",
+    "automatically edit AGENT.md",
+    "automatically edit system JSON files",
+    "automatically edit Knowledge files",
+    "automatically edit project outputs",
+    "automatically update medical rules",
+    "automatically change title, thumbnail, script, production, or SEO agents",
+    "recommend unsafe medical claims for performance reasons"
+  ],
+  "recommendation_categories": [
+    "Title",
+    "Thumbnail",
+    "Hook",
+    "Script",
+    "Production",
+    "Topic",
+    "Data Collection"
+  ],
+  "priority_levels": {
+    "1": "High confidence recommendation supported by multiple videos or a strong outlier with clear evidence.",
+    "2": "Moderate confidence recommendation supported by limited but useful evidence.",
+    "3": "Low confidence observation that should be tested before adoption."
+  },
+  "evidence_requirements": {
+    "must_include_metric_basis": true,
+    "must_include_sample_size": true,
+    "must_label_single_video_insights_as_limited": true,
+    "must_note_missing_data": true,
+    "must_separate_ctr_insights_from_retention_insights": true
+  },
+  "safe_learning_rules": {
+    "repeat_successful_patterns": "Recommend repeating patterns only when they preserve medical accuracy and viewer trust.",
+    "reduce_low_ctr_patterns": "Recommend changing weak packaging patterns when evidence is sufficient.",
+    "improve_retention_patterns": "Recommend stronger hooks, open loops, pacing, stories, recaps, and visual rhythm when retention metrics show weakness.",
+    "protect_medical_boundaries": "Never suggest stronger claims than the evidence allows.",
+    "human_review_required": "All recommendations require explicit user approval before any workflow or agent update."
+  },
+  "suggestion_format": {
+    "required_fields": [
+      "Priority",
+      "Area",
+      "Recommendation",
+      "Evidence Basis",
+      "Expected Impact",
+      "Risk"
+    ],
+    "required_sections": [
+      "Priority Recommendations",
+      "Title Recommendations",
+      "Thumbnail Recommendations",
+      "Hook Recommendations",
+      "Script Retention Recommendations",
+      "Production Pacing Recommendations",
+      "Topic Recommendations",
+      "Data Collection Improvements",
+      "Do Not Auto-Modify Notice"
+    ]
+  },
+  "validation_rules": {
+    "no_automatic_agent_changes": true,
+    "no_automatic_medical_rule_changes": true,
+    "no_automatic_project_output_changes": true,
+    "recommendations_must_be_traceable_to_metrics": true,
+    "recommendations_must_include_risk": true,
+    "recommendations_must_include_confidence_or_priority": true
+  }
+}

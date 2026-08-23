@@ -1,0 +1,82 @@
+{
+  "module": "brand_ruleset",
+  "version": "1.0",
+  "voice_vector": {
+    "warmth": 9,
+    "authority": 8,
+    "hype": 2,
+    "condescension": 0,
+    "directness": 9
+  },
+  "style_rules": [
+    {
+      "id": "S1",
+      "rule": "one_idea_per_sentence",
+      "enforce": true
+    },
+    {
+      "id": "S2",
+      "rule": "second_person_address",
+      "enforce": true
+    },
+    {
+      "id": "S3",
+      "rule": "concrete_over_abstract",
+      "enforce": true
+    },
+    {
+      "id": "S4",
+      "rule": "specific_over_vague",
+      "enforce": true
+    },
+    {
+      "id": "S5",
+      "rule": "jargon_requires_inline_translation",
+      "enforce": true
+    }
+  ],
+  "trust_signal_registry": [
+    {
+      "signal": "consistent_presenter",
+      "required": true
+    },
+    {
+      "signal": "one_cited_study",
+      "required": true
+    },
+    {
+      "signal": "balanced_framing",
+      "required": true
+    },
+    {
+      "signal": "clinician_caveat",
+      "required": true
+    },
+    {
+      "signal": "specificity",
+      "required": true
+    }
+  ],
+  "medical_positioning_flags": {
+    "allow_individual_diagnosis": false,
+    "allow_cure_promise": false,
+    "allow_med_alteration_instruction": false,
+    "require_caveat": true
+  },
+  "emotional_arc_sequence": [
+    "recognition",
+    "concern",
+    "understanding",
+    "relief",
+    "empowerment"
+  ],
+  "tone_rules": {
+    "fear_use": "signal_genuine_stakes_only",
+    "dominant_destination": "relief_and_empowerment",
+    "prohibited": [
+      "manufactured_panic",
+      "condescension",
+      "hype_beyond_evidence"
+    ]
+  }
+}

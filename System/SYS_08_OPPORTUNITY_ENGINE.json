@@ -1,0 +1,50 @@
+{
+  "module": "opportunity_scoring_engine",
+  "version": "1.0",
+  "scoring_formula": "opportunity = round( (viewer_interest * 0.30) + (evergreen * 0.20) + (ctr_potential * 0.25) + ((10 - competition) * 0.25) )",
+  "field_definitions": {
+    "viewer_interest": "1-10 demand intensity",
+    "evergreen": "1-10 timelessness",
+    "ctr_potential": "1-10 packaging strength",
+    "competition": "1-10 saturation (higher = worse)"
+  },
+  "priority_thresholds": {
+    "produce_now": ">=9",
+    "queue": "7-8",
+    "backlog": "5-6",
+    "reject": "<5"
+  },
+  "whitespace_matrix": [
+    { "topic": "feet_circulation_diagnostic", "vi": 9, "ever": 10, "ctr": 9, "comp": 4, "opportunity": 9 },
+    { "topic": "wake_at_3am", "vi": 10, "ever": 10, "ctr": 9, "comp": 5, "opportunity": 9 },
+    { "topic": "magnesium_deficiency", "vi": 9, "ever": 10, "ctr": 9, "comp": 5, "opportunity": 9 },
+    { "topic": "b12_deficiency", "vi": 10, "ever": 10, "ctr": 9, "comp": 5, "opportunity": 9 },
+    { "topic": "taking_metformin", "vi": 10, "ever": 10, "ctr": 9, "comp": 5, "opportunity": 9 },
+    { "topic": "taking_statin", "vi": 10, "ever": 10, "ctr": 9, "comp": 5, "opportunity": 9 },
+    { "topic": "home_balance_tests", "vi": 9, "ever": 10, "ctr": 9, "comp": 4, "opportunity": 9 },
+    { "topic": "early_dementia_signs", "vi": 10, "ever": 10, "ctr": 9, "comp": 6, "opportunity": 9 },
+    { "topic": "medication_timing_mistakes", "vi": 9, "ever": 10, "ctr": 9, "comp": 4, "opportunity": 9 },
+    { "topic": "tongue_diagnostic", "vi": 9, "ever": 10, "ctr": 10, "comp": 4, "opportunity": 9 },
+    { "topic": "exhausted_despite_sleep", "vi": 10, "ever": 10, "ctr": 9, "comp": 6, "opportunity": 9 }
+  ],
+  "gap_flags": [
+    "no_x_vs_y",
+    "no_myth_buster",
+    "no_social_proof",
+    "no_standalone_inflammation",
+    "no_non_bp_named_drug",
+    "no_feet_tongue_ear_gum",
+    "no_prevention_age"
+  ],
+  "emerging_levers": {
+    "social_proof": "absent_across_competitors_high_value",
+    "low_fear_curiosity": "highest_ceiling",
+    "diagnostic_rotation": "required_to_avoid_fatigue",
+    "prevention_age_brackets": "50s_and_80s_low_competition"
+  },
+  "reaudit_directive": {
+    "cadence": "quarterly",
+    "trigger": "competitor_format_breakout",
+    "note": "Whitespace saturates as the channel produces; refresh matrix regularly."
+  }
+}

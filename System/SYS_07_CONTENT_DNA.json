@@ -1,0 +1,74 @@
+{
+  "module": "content_dna_db",
+  "version": "1.0",
+  "topics": [
+    { "id": "eyes", "status": "underserved_goldmine", "proven_peak": 721000, "competition": 4 },
+    { "id": "bp_named_drugs", "status": "proven_scalable", "proven_peak": 892000, "competition": 8 },
+    { "id": "legs_mobility", "status": "reliable_core", "proven_peak": 382000, "competition": 7 },
+    { "id": "skin_antiaging", "status": "low_comp_growth", "proven_peak": 181000, "competition": 6 },
+    { "id": "heart_nails_diagnostic", "status": "high_click_fatigue", "proven_peak": 231000, "competition": 8 },
+    { "id": "medical_skepticism", "status": "contrarian_underused", "proven_peak": 147000, "competition": 5 },
+    { "id": "stroke_sleep_position", "status": "dual_fear", "proven_peak": 160000, "competition": 6 },
+    { "id": "diabetes_reframe", "status": "saturated_backbone", "proven_peak": 240000, "competition": 9 }
+  ],
+  "food_principle": "forbidden_food_made_safe > eat_healthy_thing",
+  "foods_ranked": [
+    "ice_cream",
+    "chocolate",
+    "cheese",
+    "fruit",
+    "beet_juice",
+    "clove_coffee",
+    "spices",
+    "meats",
+    "nuts"
+  ],
+  "diseases_ranked": [
+    "t2_diabetes",
+    "blood_pressure",
+    "cardiovascular",
+    "circulation",
+    "stroke",
+    "memory",
+    "muscle_loss",
+    "cancer",
+    "kidney"
+  ],
+  "diseases_untapped": [
+    "dementia_specific",
+    "liver",
+    "thyroid",
+    "osteoporosis",
+    "neuropathy"
+  ],
+  "body_parts_proven": [
+    "legs",
+    "nails",
+    "heart",
+    "eyes",
+    "brain",
+    "skin"
+  ],
+  "body_parts_untapped": [
+    "feet",
+    "tongue",
+    "ears",
+    "gums",
+    "hands",
+    "knees"
+  ],
+  "promises_ranked": [
+    "detect_hidden_danger",
+    "guilt_free_indulgence",
+    "insider_secret",
+    "cheap_fast_transform",
+    "stay_independent"
+  ],
+  "winning_transformation": "helpless_unaware -> empowered_in_control",
+  "winning_combinations": [
+    "bodypart_diagnostic x underserved_organ",
+    "named_drug_insider x non_bp_drug",
+    "hidden_mistake_list x sleep_or_nutrients",
+    "forbidden_food_reprieve x new_indulgence_food"
+  ]
+}

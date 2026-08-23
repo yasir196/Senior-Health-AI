@@ -1,0 +1,64 @@
+{
+  "system": "senior_health_youtube_production",
+  "version": "1.0",
+  "consumption_mode": "agent_direct",
+  "description": "Root index for the executable knowledge system. Orchestrating agents load this file first, then traverse modules by id.",
+  "modules": {
+    "SYS_01": "audience_and_strategy_db",
+    "SYS_02": "brand_ruleset",
+    "SYS_03": "psychology_lookup_tables",
+    "SYS_04": "title_engine",
+    "SYS_05": "hook_engine",
+    "SYS_06": "thumbnail_engine",
+    "SYS_07": "content_dna_db",
+    "SYS_08": "opportunity_scoring_engine",
+    "SYS_09": "medical_rule_engine",
+    "SYS_10": "script_state_machine",
+    "SYS_11": "production_pipeline_dag",
+    "SYS_12": "agent_definitions",
+    "SYS_13": "prompt_library",
+    "SYS_14": "scoring_matrices",
+    "SYS_15": "validation_gates",
+    "SYS_16": "telemetry_ingestion",
+    "SYS_17": "self_improvement_engine",
+    "SYS_18": "evidence_library_manager"
+  },
+  "global_constraints": {
+    "hard_gates": [
+      "GATE_FACTCHECK",
+      "GATE_PACKAGING_MATCH",
+      "GATE_QA_FINAL"
+    ],
+    "frozen_modules": [
+      "SYS_09"
+    ],
+    "anchor_rotation_target": {
+      "fear": 0.4,
+      "relief": 0.4,
+      "curiosity_only": 0.2
+    }
+  },
+  "execution_order": [
+    "topic_input",
+    "outlier_agent_opportunity_validation",
+    "research_agent",
+    "medical_agent_gate_1",
+    "thumbnail_agent",
+    "script_agent",
+    "medical_agent_gate_2",
+    "production_agent",
+    "seo_agent",
+    "final_qa",
+    "publish_schedule_checklist",
+    "project_summary"
+  ],
+  "usage_contract": {
+    "hard_stop_rule": "Any gate with an unmet pass_condition halts the pipeline.",
+    "non_negotiable_gates": [
+      "GATE_FACTCHECK",
+      "GATE_PACKAGING_MATCH"
+    ],
+    "rotation_enforcement": "SYS_14.portfolio_balance_monitor overrides topic anchor when the rolling balance is breached.",
+    "learning_boundary": "SYS_17 has no write access to SYS_09 or to any gate pass_condition."
+  }
+}

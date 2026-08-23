@@ -1,0 +1,235 @@
+{
+  "module": "script_state_machine",
+  "version": "1.2",
+  "objective": {
+    "primary": "Optimize Average View Duration while preserving medical accuracy and trust.",
+    "principle": "Retention is equally important as factual correctness. Scripts must create curiosity, momentum, and visual rhythm instead of presenting information only sequentially."
+  },
+  "default_runtime": {
+    "target_minutes": 20,
+    "minimum_minutes": 18,
+    "maximum_minutes": 23,
+    "override_policy": "Scripts outside 18-23 minutes fail QA unless the user explicitly provides a different runtime target or explicit runtime override.",
+    "estimated_speaking_rate_wpm": {
+      "default": 145,
+      "acceptable_range": [130, 160]
+    },
+    "estimated_word_count_range_default": {
+      "min_words_at_130_wpm": 2340,
+      "target_words_at_145_wpm": 2900,
+      "max_words_at_160_wpm": 3680
+    }
+  },
+  "states": [
+    { "state": "HOOK", "t": "0-60s", "exit_condition": "first_30s_contains_self_id_surprise_open_loop_promise_emotional_reason", "next": "STAKES" },
+    { "state": "STAKES", "t": "60-120s", "exit_condition": "personal_relevance_established", "next": "CREDIBILITY" },
+    { "state": "CREDIBILITY", "t": "120-180s", "exit_condition": "presenter_and_study_cited", "next": "BODY" },
+    { "state": "BODY", "t": "bulk", "exit_condition": "all_items_revealed_ascending", "next": "RECAP" },
+    { "state": "RECAP", "t": "final", "exit_condition": "strongest_payoff_restated_and_cta", "next": "END" }
+  ],
+  "invariants": [
+    { "id": "I1", "rule": "loop_open_every_60_90s", "severity": "block" },
+    { "id": "I2", "rule": "items_ascending_importance", "severity": "block" },
+    { "id": "I3", "rule": "strongest_item_last_and_pre_teased", "severity": "warn" },
+    { "id": "I4", "rule": "one_actionable_takeaway_min", "severity": "block" },
+    { "id": "I5", "rule": "payoff_matches_title", "severity": "block" },
+    { "id": "I6", "rule": "caveat_present", "severity": "block" },
+    { "id": "I7", "rule": "default_runtime_18_to_23_minutes_unless_explicitly_overridden", "severity": "block" },
+    { "id": "I8", "rule": "every_section_adds_new_value", "severity": "block" },
+    { "id": "I9", "rule": "no_padding_to_hit_runtime", "severity": "block" },
+    { "id": "I10", "rule": "runtime_metrics_block_present", "severity": "block" },
+    { "id": "I11", "rule": "channel_name_placeholder_or_generic_cta", "severity": "block" },
+    { "id": "I12", "rule": "presenter_name_placeholders_required", "severity": "block" },
+    { "id": "I13", "rule": "first_30_seconds_retention_hook_complete", "severity": "block" },
+    { "id": "I14", "rule": "curiosity_loop_opened_every_60_to_90_seconds_and_closed", "severity": "block" },
+    { "id": "I15", "rule": "pattern_interrupt_every_2_to_3_minutes", "severity": "block" },
+    { "id": "I16", "rule": "mini_story_every_4_to_5_minutes", "severity": "block" },
+    { "id": "I17", "rule": "visual_cue_at_major_transitions", "severity": "block" },
+    { "id": "I18", "rule": "micro_recap_every_4_to_5_minutes_under_20_seconds", "severity": "block" },
+    { "id": "I19", "rule": "major_sections_end_with_next_section_tease", "severity": "block" },
+    { "id": "I20", "rule": "final_payoff_contains_biggest_lesson_safest_takeaway_practical_action", "severity": "block" },
+    { "id": "I21", "rule": "cta_after_recap_not_before", "severity": "block" },
+    { "id": "I22", "rule": "retention_report_present", "severity": "block" }
+  ],
+  "retention_engine": {
+    "hook_first_30_seconds": {
+      "required_elements": [
+        "immediate_viewer_self_identification",
+        "one_surprising_statement",
+        "one_open_curiosity_loop",
+        "one_promise",
+        "one_emotional_reason_to_continue"
+      ],
+      "prohibited": [
+        "explaining_everything_immediately",
+        "soft_greeting_before_tension"
+      ]
+    },
+    "open_loops": {
+      "cadence_seconds": [60, 90],
+      "must_eventually_close": true,
+      "examples": [
+        "That isn't even the biggest mistake...",
+        "But something even more important comes later.",
+        "Rule #6 is where most people accidentally go wrong.",
+        "The food everyone talks about isn't actually the first thing to fix."
+      ]
+    },
+    "pattern_interrupts": {
+      "cadence_minutes": [2, 3],
+      "maximum_uninterrupted_explanation_minutes": 3,
+      "allowed_types": [
+        "surprising_fact",
+        "myth_vs_reality",
+        "comparison",
+        "mini_story",
+        "practical_demonstration",
+        "visual_question",
+        "common_mistake",
+        "doctor_insight",
+        "checklist"
+      ]
+    },
+    "mini_stories": {
+      "cadence_minutes": [4, 5],
+      "purpose": "Use short real-world scenarios to make abstract health guidance concrete.",
+      "examples": [
+        "Imagine two adults, both 72 years old...",
+        "Many people do this every morning without realizing..."
+      ],
+      "rules": [
+        "stories_must_remain_educational",
+        "no_fictional_medical_outcomes"
+      ]
+    },
+    "visual_cues": {
+      "required_at_major_transitions": true,
+      "format": "[Visual Cue]",
+      "examples": [
+        "Show food labels.",
+        "Compare two breakfast plates.",
+        "Zoom into kidney illustration."
+      ],
+      "consumer": "Production_Agent"
+    },
+    "micro_recaps": {
+      "cadence_minutes": [4, 5],
+      "max_seconds": 20,
+      "purpose": "Briefly remind viewers what has been learned so far."
+    },
+    "section_endings": {
+      "must_tease_next_section": true,
+      "example": "But potassium isn't the nutrient most people misunderstand."
+    },
+    "final_payoff": {
+      "must_feel_rewarding": true,
+      "required_elements": [
+        "biggest_lesson",
+        "safest_takeaway",
+        "practical_action_for_tomorrow"
+      ],
+      "abrupt_ending": "prohibited"
+    },
+    "cta": {
+      "placement": "after_recap_or_inside_final_payoff",
+      "must_not_interrupt_education": true,
+      "preferred_phrase": "If you enjoy evidence-based senior health guidance..."
+    }
+  },
+  "section_value_requirements": {
+    "purpose": "Prevent padding and repetition by requiring every section to add a distinct value type.",
+    "allowed_value_types": [
+      "evidence",
+      "mechanism",
+      "myth",
+      "comparison",
+      "practical_tip",
+      "warning",
+      "recap"
+    ],
+    "rule": "Every outline section and final script section must be tagged with at least one allowed value type. Sections that repeat previous information without a new value type fail validation."
+  },
+  "required_final_script_metrics": {
+    "must_appear_at_end": true,
+    "fields": [
+      "Estimated Runtime",
+      "Estimated Word Count",
+      "Average Speaking Rate",
+      "Target Runtime Status"
+    ],
+    "target_runtime_status_values": ["PASS", "FAIL"],
+    "pass_condition": "PASS only when estimated runtime is within target range or an explicit runtime override is documented."
+  },
+  "required_retention_report": {
+    "must_appear_at_end": true,
+    "fields": [
+      "Estimated AVD Potential",
+      "Hook Strength /10",
+      "Curiosity Loops",
+      "Pattern Interrupts",
+      "Mini Stories",
+      "Visual Cue Count",
+      "Micro Recaps",
+      "Estimated Engagement",
+      "Weakest Section",
+      "Strongest Section"
+    ]
+  },
+  "placeholder_policy": {
+    "channel_name": {
+      "placeholder": "{{CHANNEL_NAME}}",
+      "empty_value_fallback": "Use a generic subscribe CTA without naming the channel.",
+      "hardcoded_channel_names": "prohibited"
+    },
+    "presenter_names": {
+      "host_placeholder": "{{HOST_NAME}}",
+      "doctor_placeholder": "{{DOCTOR_NAME}}",
+      "hardcoded_presenter_names": "prohibited"
+    }
+  },
+  "transition_style": "bridge_via_reteased_loop",
+  "engagement_devices": [
+    "second_person_address",
+    "rhetorical_questions",
+    "physical_participation_prompts",
+    "symptom_checklists",
+    "open_curiosity_loops",
+    "pattern_interrupts",
+    "mini_stories",
+    "visual_cues",
+    "micro_recaps",
+    "section_teasers"
+  ],
+  "value_add_requirement": {
+    "min_actionable_takeaways": 1,
+    "must_be_evidence_backed": true,
+    "payoff_must_match_title": true,
+    "bait_and_switch": "prohibited",
+    "padding": "prohibited",
+    "each_section_must_add": [
+      "evidence",
+      "mechanism",
+      "myth",
+      "comparison",
+      "practical_tip",
+      "warning",
+      "recap"
+    ]
+  },
+  "qa_failure_rules": {
+    "runtime_outside_target_without_override": "fail",
+    "missing_runtime_metrics_block": "fail",
+    "hardcoded_channel_name": "fail",
+    "hardcoded_presenter_name": "fail",
+    "padding_or_repetitive_sections": "fail",
+    "no_curiosity_loops": "fail",
+    "unclosed_curiosity_loops": "fail",
+    "missing_pattern_interrupts": "fail",
+    "no_mini_stories": "fail",
+    "missing_visual_cues": "fail",
+    "missing_micro_recaps": "fail",
+    "abrupt_ending": "fail",
+    "cta_before_recap": "fail",
+    "missing_retention_report": "fail"
+  }
+}

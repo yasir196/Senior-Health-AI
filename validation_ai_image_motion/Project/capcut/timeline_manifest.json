@@ -1,0 +1,206 @@
+{
+  "base_avatar": {
+    "chunks": [
+      {
+        "duration_seconds": 8.0,
+        "end_seconds": 8.0,
+        "filename": "c1.mp4",
+        "order": 1,
+        "reference": "avatars/c1.mp4",
+        "start_seconds": 0.0
+      }
+    ],
+    "source": "avatar_timing_manifest.json",
+    "total_duration_seconds": 8.0
+  },
+  "content_sha256": "b839ff3deb7f089f05cbccdf5ba01f88f152e1e401ebef0da562037513c81d64",
+  "production_assignments": {
+    "broll_count": 0,
+    "image_count": 4,
+    "source": "07_production_sheet.csv"
+  },
+  "project_name": "Project",
+  "scenes": [
+    {
+      "assets": {
+        "avatar": {
+          "reference": "avatars/c1.mp4",
+          "required": true
+        },
+        "broll": null,
+        "image": null
+      },
+      "narration_text": "Scene 1",
+      "order": 1,
+      "scene_id": "S001",
+      "timing": {
+        "duration_seconds": 1.25,
+        "end_seconds": 1.25,
+        "reported_duration_seconds": 1.25,
+        "start_seconds": 0.0
+      },
+      "timing_source": "word",
+      "tracks": {
+        "avatar_audio": "A1",
+        "avatar_video": "V1",
+        "broll": "V3",
+        "image": "V2"
+      },
+      "transition": {
+        "duration_seconds": 0.0,
+        "type": "none"
+      },
+      "visual_assignment": {
+        "kind": "image",
+        "production_asset_type": "AI_IMAGE",
+        "prompt_id": "IMG-001",
+        "reference": "assets/images/image_001.png",
+        "slot_id": "image_001"
+      }
+    },
+    {
+      "assets": {
+        "avatar": {
+          "reference": "avatars/c1.mp4",
+          "required": true
+        },
+        "broll": null,
+        "image": null
+      },
+      "narration_text": "Scene 2",
+      "order": 2,
+      "scene_id": "S002",
+      "timing": {
+        "duration_seconds": 1.25,
+        "end_seconds": 2.5,
+        "reported_duration_seconds": 1.25,
+        "start_seconds": 1.25
+      },
+      "timing_source": "word",
+      "tracks": {
+        "avatar_audio": "A1",
+        "avatar_video": "V1",
+        "broll": "V3",
+        "image": "V2"
+      },
+      "transition": {
+        "duration_seconds": 0.0,
+        "type": "none"
+      },
+      "visual_assignment": {
+        "kind": "image",
+        "production_asset_type": "AI_IMAGE",
+        "prompt_id": "IMG-002",
+        "reference": "assets/images/image_002.png",
+        "slot_id": "image_002"
+      }
+    },
+    {
+      "assets": {
+        "avatar": {
+          "reference": "avatars/c1.mp4",
+          "required": true
+        },
+        "broll": null,
+        "image": null
+      },
+      "narration_text": "Scene 3",
+      "order": 3,
+      "scene_id": "S003",
+      "timing": {
+        "duration_seconds": 1.25,
+        "end_seconds": 3.75,
+        "reported_duration_seconds": 1.25,
+        "start_seconds": 2.5
+      },
+      "timing_source": "word",
+      "tracks": {
+        "avatar_audio": "A1",
+        "avatar_video": "V1",
+        "broll": "V3",
+        "image": "V2"
+      },
+      "transition": {
+        "duration_seconds": 0.0,
+        "type": "none"
+      },
+      "visual_assignment": {
+        "kind": "image",
+        "production_asset_type": "AI_IMAGE",
+        "prompt_id": "IMG-003",
+        "reference": "assets/images/image_003.png",
+        "slot_id": "image_003"
+      }
+    },
+    {
+      "assets": {
+        "avatar": {
+          "reference": "avatars/c1.mp4",
+          "required": true
+        },
+        "broll": null,
+        "image": null
+      },
+      "narration_text": "Scene 4",
+      "order": 4,
+      "scene_id": "S004",
+      "timing": {
+        "duration_seconds": 1.25,
+        "end_seconds": 5.0,
+        "reported_duration_seconds": 1.25,
+        "start_seconds": 3.75
+      },
+      "timing_source": "word",
+      "tracks": {
+        "avatar_audio": "A1",
+        "avatar_video": "V1",
+        "broll": "V3",
+        "image": "V2"
+      },
+      "transition": {
+        "duration_seconds": 0.0,
+        "type": "none"
+      },
+      "visual_assignment": {
+        "kind": "image",
+        "production_asset_type": "AI_IMAGE",
+        "prompt_id": "IMG-004",
+        "reference": "assets/images/image_004.png",
+        "slot_id": "image_004"
+      }
+    }
+  ],
+  "schema": "senior-health-ai.timeline-manifest",
+  "schema_version": "1.1",
+  "timebase": {
+    "recalculation_allowed": false,
+    "source": "08_actual_timeline.csv",
+    "unit": "seconds"
+  },
+  "timeline": {
+    "duration_seconds": 5.0,
+    "scene_count": 4
+  },
+  "tracks": [
+    {
+      "id": "V1",
+      "kind": "video",
+      "purpose": "avatar"
+    },
+    {
+      "id": "V2",
+      "kind": "video",
+      "purpose": "images"
+    },
+    {
+      "id": "V3",
+      "kind": "video",
+      "purpose": "broll"
+    },
+    {
+      "id": "A1",
+      "kind": "audio",
+      "purpose": "avatar_audio"
+    }
+  ]
+}

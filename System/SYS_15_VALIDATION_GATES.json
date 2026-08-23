@@ -1,0 +1,150 @@
+{
+  "version": "1.5",
+  "module": "meta_validation_orchestration_validator",
+  "purpose": "Validate workflow completeness, selected production-mode outputs, PASS/FAIL aggregation, cross-file consistency, and readiness scope without duplicating detailed validation rules owned by stage-specific modules or agents.",
+  "production_modes": {
+    "supported_modes": [
+      "talking_head",
+      "documentary"
+    ],
+    "selected_mode_source": "config.production_mode",
+    "run_only_selected_branch": true,
+    "unselected_branch_outputs_required": false,
+    "talking_head": {
+      "authority_reference": "The authoritative production rules for this branch are defined in Production_TalkingHead_Agent.",
+      "required_outputs": [
+        "Projects/<topic_slug>/11_talkinghead_production.md",
+        "Projects/<topic_slug>/12_talkinghead_editor.csv"
+      ],
+      "sys_15_checks_only": [
+        "11_talkinghead_production_md_exists",
+        "12_talkinghead_editor_csv_exists",
+        "production_package_validation_returned_PASS",
+        "markdown_and_csv_synchronization_returned_PASS",
+        "every_supporting_visual_duration_is_8_seconds_or_less",
+        "all_required_editor_cue_fields_exist",
+        "narration_coverage_returned_PASS"
+      ],
+      "must_not_require": [
+        "Projects/<topic_slug>/07_production_sheet.csv",
+        "Projects/<topic_slug>/10_image_prompts.md",
+        "Projects/<topic_slug>/12_broll_prompts.md"
+      ]
+    },
+    "documentary": {
+      "authority_reference": "The authoritative production rules for this branch are defined in Production_Agent.",
+      "required_outputs": [
+        "Projects/<topic_slug>/07_production_sheet.csv",
+        "Projects/<topic_slug>/10_image_prompts.md",
+        "Projects/<topic_slug>/12_broll_prompts.md"
+      ],
+      "sys_15_checks_only": [
+        "stage_returned_PASS",
+        "required_outputs_exist",
+        "required_downstream_inputs_exist",
+        "required_files_are_synchronized",
+        "workflow_order_is_valid"
+      ],
+      "must_not_require": [
+        "Projects/<topic_slug>/11_talkinghead_production.md",
+        "Projects/<topic_slug>/12_talkinghead_editor.csv"
+      ]
+    }
+  },
+  "validation_scopes": {
+    "production_readiness": {
+      "description": "Validate the project through the selected production-mode package only. Publishing-stage files are not required in this scope.",
+      "required_common_outputs": [
+        "Projects/<topic_slug>/01_topic_validation.md",
+        "Projects/<topic_slug>/01b_outlier_references.md",
+        "Projects/<topic_slug>/02_research_sheet.md",
+        "Projects/<topic_slug>/04_thumbnail_concepts.md",
+        "Projects/<topic_slug>/11_thumbnail_prompt.md",
+        "Projects/<topic_slug>/05_script_outline.md",
+        "Projects/<topic_slug>/06_final_script.md",
+        "Projects/<topic_slug>/07_script_validation.md",
+        "Projects/<topic_slug>/13_fact_check_log.md"
+      ],
+      "required_stage_results": [
+        "outlier_validation_PASS_or_preserved_topic_validation_PASS",
+        "research_PASS",
+        "medical_gate_1_PASS",
+        "thumbnail_validation_PASS",
+        "script_outline_present",
+        "final_script_present",
+        "medical_gate_2_PASS",
+        "structural_script_validation_PASS",
+        "selected_production_mode_validation_PASS"
+      ],
+      "exclude_outputs": [
+        "Projects/<topic_slug>/08_youtube_metadata.md",
+        "Projects/<topic_slug>/09_qa_checklist.md",
+        "Projects/<topic_slug>/14_project_summary.md"
+      ],
+      "missing_publishing_stage_files_do_not_fail_scope": true
+    },
+    "publishing_readiness": {
+      "description": "Validate all production-readiness requirements plus publishing, QA, and project-summary deliverables.",
+      "inherits": "production_readiness",
+      "required_outputs": [
+        "Projects/<topic_slug>/08_youtube_metadata.md",
+        "Projects/<topic_slug>/09_qa_checklist.md",
+        "Projects/<topic_slug>/14_project_summary.md"
+      ],
+      "conditional_outputs": [
+        "final_timestamps_or_chapters_when_required_by_current_workflow",
+        "publish_schedule_status_when_required_by_current_workflow"
+      ]
+    }
+  },
+  "stage_authorities": [
+    {
+      "stage": "Opportunity",
+      "authority_reference": "The authoritative validation rules for this stage are defined in Agents/Outlier_Agent.md."
+    },
+    {
+      "stage": "Research",
+      "authority_reference": "The authoritative validation rules for this stage are defined in the Research_Agent contract and research source requirements owned outside SYS_15."
+    },
+    {
+      "stage": "Medical Gates",
+      "authority_reference": "The authoritative validation rules for medical gates are defined in SYS_09_MEDICAL_RULE_ENGINE."
+    },
+    {
+      "stage": "Thumbnail",
+      "authority_reference": "The authoritative validation rules for this stage are defined in SYS_06_THUMBNAIL_ENGINE."
+    },
+    {
+      "stage": "Script",
+      "authority_reference": "The authoritative validation rules for this stage are defined in the Script_Agent contract and SYS_10_SCRIPT_STATE_MACHINE."
+    },
+    {
+      "stage": "Talking-Head Production",
+      "authority_reference": "The authoritative validation rules for this branch are defined in Production_TalkingHead_Agent."
+    },
+    {
+      "stage": "Documentary Production",
+      "authority_reference": "The authoritative validation rules for this branch are defined in Production_Agent."
+    }
+  ],
+  "orchestration_validation": {
+    "workflow_sequencing": {
+      "source_of_truth": "SYS_11_PIPELINE_DAG",
+      "check": "Stages must execute in DAG order, and the production-mode decision gate must run before production."
+    },
+    "stage_dependencies": {
+      "source_of_truth": "SYS_11_PIPELINE_DAG and SYS_12_AGENTS",
+      "check": "Each stage must receive the required upstream inputs declared by the workflow DAG and agent registry."
+    },
+    "pass_fail_aggregation": {
+      "check": "Readiness is PASS only when all required stages for the selected validation scope return PASS and selected production-mode outputs exist."
+    },
+    "cross_file_consistency": {
+      "checks": [
+        "paired_markdown_and_csv_outputs_exist_when_declared",
+        "stage_reports_do_not_disagree_on selected topic, selected title, medical gate status, production mode, or production deliverables",
+        "unselected_production_branch_outputs_are_not_required"
+      ]
+    }
+  }
+}

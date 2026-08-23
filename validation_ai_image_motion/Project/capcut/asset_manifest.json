@@ -1,0 +1,73 @@
+{
+  "assets": [
+    {
+      "exists": true,
+      "kind": "avatar",
+      "placeholder": false,
+      "project_root": "/mnt/data/capcut_fix/prodlock_work/validation_ai_image_motion/Project",
+      "reference": "avatars/c1.mp4",
+      "required": true,
+      "resolved_path": "/mnt/data/capcut_fix/prodlock_work/validation_ai_image_motion/Project/avatars/c1.mp4",
+      "scene_id": "BASE:c1.mp4"
+    },
+    {
+      "exists": true,
+      "kind": "image",
+      "placeholder": false,
+      "placeholder_path": "",
+      "project_root": "/mnt/data/capcut_fix/prodlock_work/validation_ai_image_motion/Project",
+      "prompt_id": "IMG-001",
+      "reference": "assets/images/image_001.png",
+      "required": false,
+      "resolved_path": "/mnt/data/capcut_fix/prodlock_work/validation_ai_image_motion/Project/assets/images/image_001.png",
+      "scene_id": "S001",
+      "slot_id": "image_001"
+    },
+    {
+      "exists": true,
+      "kind": "image",
+      "placeholder": false,
+      "placeholder_path": "",
+      "project_root": "/mnt/data/capcut_fix/prodlock_work/validation_ai_image_motion/Project",
+      "prompt_id": "IMG-002",
+      "reference": "assets/images/image_002.png",
+      "required": false,
+      "resolved_path": "/mnt/data/capcut_fix/prodlock_work/validation_ai_image_motion/Project/assets/images/image_002.png",
+      "scene_id": "S002",
+      "slot_id": "image_002"
+    },
+    {
+      "exists": true,
+      "kind": "image",
+      "placeholder": false,
+      "placeholder_path": "",
+      "project_root": "/mnt/data/capcut_fix/prodlock_work/validation_ai_image_motion/Project",
+      "prompt_id": "IMG-003",
+      "reference": "assets/images/image_003.png",
+      "required": false,
+      "resolved_path": "/mnt/data/capcut_fix/prodlock_work/validation_ai_image_motion/Project/assets/images/image_003.png",
+      "scene_id": "S003",
+      "slot_id": "image_003"
+    },
+    {
+      "exists": true,
+      "kind": "image",
+      "placeholder": false,
+      "placeholder_path": "",
+      "project_root": "/mnt/data/capcut_fix/prodlock_work/validation_ai_image_motion/Project",
+      "prompt_id": "IMG-004",
+      "reference": "assets/images/image_004.png",
+      "required": false,
+      "resolved_path": "/mnt/data/capcut_fix/prodlock_work/validation_ai_image_motion/Project/assets/images/image_004.png",
+      "scene_id": "S004",
+      "slot_id": "image_004"
+    }
+  ],
+  "broll_assignment_count": 0,
+  "broll_placeholders_remaining": 0,
+  "final_assets_ready": true,
+  "image_assignment_count": 4,
+  "image_placeholders_remaining": 0,
+  "required_avatar_missing_count": 0,
+  "schema_version": "1.1"
+}

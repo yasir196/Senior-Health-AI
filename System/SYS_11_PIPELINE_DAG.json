@@ -1,0 +1,228 @@
+{
+  "module": "production_pipeline_dag",
+  "version": "1.2",
+  "nodes": [
+    {
+      "id": "n1",
+      "stage": "project_initialization",
+      "agent": "user_or_orchestrator",
+      "input": "user-supplied Anchor / Outlier Title",
+      "output": "project.json(anchor_title) + 01a_anchor_claim_map.json",
+      "gate": false
+    },
+    {
+      "id": "n2",
+      "stage": "opportunity_validation",
+      "agent": "outlier_agent",
+      "input": "project.json.anchor_title + 01a_anchor_claim_map.json",
+      "output": "01_topic_validation.md + 01b_outlier_references.md",
+      "gate": true
+    },
+    {
+      "id": "n3",
+      "stage": "research",
+      "agent": "research_agent",
+      "input": "01_topic_validation.md",
+      "output": "02_research_sheet.md",
+      "gate": true
+    },
+    {
+      "id": "n4",
+      "stage": "medical_gate_1",
+      "agent": "medical_agent",
+      "input": "02_research_sheet.md",
+      "output": "13_fact_check_log.md",
+      "gate": true
+    },
+    {
+      "id": "n6",
+      "stage": "thumbnail",
+      "agent": "thumbnail_agent",
+      "input": "project.json.anchor_title + 02_research_sheet.md + 01_topic_validation.md + 13_fact_check_log.md",
+      "output": "04_thumbnail_concepts.md + 11_thumbnail_prompt.md",
+      "gate": true
+    },
+    {
+      "id": "n7",
+      "stage": "script",
+      "agent": "script_agent",
+      "input": "project.json.anchor_title + 01_topic_validation.md + 02_research_sheet.md + 04_thumbnail_concepts.md + 11_thumbnail_prompt.md",
+      "output": "05_script_outline.md + 06_final_script.md",
+      "gate": true
+    },
+    {
+      "id": "n8",
+      "stage": "medical_gate_2",
+      "agent": "medical_agent",
+      "input": "06_final_script.md + 02_research_sheet.md",
+      "output": "13_fact_check_log.md",
+      "gate": true
+    },
+    {
+      "id": "n8a",
+      "stage": "production_mode_decision",
+      "agent": "orchestrator",
+      "input": "config.production_mode",
+      "output": "selected_production_mode",
+      "gate": true,
+      "allowed_values": [
+        "talking_head",
+        "documentary"
+      ]
+    },
+    {
+      "id": "n9a",
+      "stage": "talking_head_production",
+      "agent": "production_talkinghead_agent",
+      "input": "04_thumbnail_concepts.md + 05_script_outline.md + 06_final_script.md + 13_fact_check_log.md + selected_production_mode=talking_head",
+      "output": "11_talkinghead_production.md + 12_talkinghead_editor.csv",
+      "gate": true
+    },
+    {
+      "id": "n9",
+      "stage": "documentary_production",
+      "agent": "production_agent",
+      "input": "04_thumbnail_concepts.md + 05_script_outline.md + 06_final_script.md + 13_fact_check_log.md + selected_production_mode=documentary",
+      "output": "07_production_sheet.csv + 10_image_prompts.md + 12_broll_prompts.md",
+      "gate": true
+    },
+    {
+      "id": "n10",
+      "stage": "seo",
+      "agent": "seo_agent",
+      "input": "project.json.anchor_title + 06_final_script.md + 07_production_sheet.csv + 02_research_sheet.md",
+      "output": "08_youtube_metadata.md",
+      "gate": true
+    },
+    {
+      "id": "n11",
+      "stage": "final_qa",
+      "agent": "orchestrator",
+      "input": "01-13 project outputs",
+      "output": "09_qa_checklist.md",
+      "gate": true
+    },
+    {
+      "id": "n12",
+      "stage": "publish_schedule_checklist",
+      "agent": "orchestrator",
+      "input": "09_qa_checklist.md + 08_youtube_metadata.md",
+      "output": "publish_schedule_status",
+      "gate": true
+    },
+    {
+      "id": "n13",
+      "stage": "project_summary",
+      "agent": "orchestrator",
+      "input": "01-13 project outputs + publish_schedule_status",
+      "output": "14_project_summary.md",
+      "gate": false
+    }
+  ],
+  "edges": [
+    [
+      "n1",
+      "n2"
+    ],
+    [
+      "n2",
+      "n3"
+    ],
+    [
+      "n3",
+      "n4"
+    ],
+    [
+      "n4",
+      "n6"
+    ],
+    [
+      "n6",
+      "n7"
+    ],
+    [
+      "n7",
+      "n8"
+    ],
+    [
+      "n8",
+      "n8a"
+    ],
+    [
+      "n8a",
+      "n9a"
+    ],
+    [
+      "n8a",
+      "n9"
+    ],
+    [
+      "n9a",
+      "n10"
+    ],
+    [
+      "n9",
+      "n10"
+    ],
+    [
+      "n10",
+      "n11"
+    ],
+    [
+      "n11",
+      "n12"
+    ],
+    [
+      "n12",
+      "n13"
+    ]
+  ],
+  "gate_policy": {
+    "gates": [
+      "n2",
+      "n3",
+      "n4",
+      "n6",
+      "n7",
+      "n8",
+      "n8a",
+      "n9a",
+      "n9",
+      "n10",
+      "n11",
+      "n12"
+    ],
+    "on_fail": "halt_and_return_to_named_failure_route",
+    "non_negotiable": [
+      "n4",
+      "n8",
+      "n11"
+    ],
+    "failure_routes": {
+      "research_fail": "research_agent",
+      "medical_gate_1_fail": "research_agent",
+      "thumbnail_fail": "thumbnail_agent",
+      "script_fail": "script_agent",
+      "medical_gate_2_fail": "script_agent_or_research_agent",
+      "talking_head_production_fail": "production_talkinghead_agent",
+      "documentary_production_fail": "production_agent",
+      "seo_fail": "seo_agent",
+      "final_qa_fail": "specific_failed_agent"
+    }
+  },
+  "parallelism": {
+    "parallel_after": null,
+    "parallel_nodes": [],
+    "join_at": null,
+    "note": "Title generation removed. Medical Gate 1 flows directly to Thumbnail."
+  },
+  "workflow_validation": {
+    "user_supplied_title_required": true,
+    "title_generation_stage_present": false,
+    "winning_title_source": "project.json.anchor_title",
+    "required_before_outlier_agent": [
+      "project.json.anchor_title",
+      "01a_anchor_claim_map.json"
+    ]
+  }
+}

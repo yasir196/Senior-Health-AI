@@ -1,0 +1,21 @@
+{
+  "version": "1.0",
+  "purpose": "Score every video idea before production.",
+  "weights": {
+    "viewer_pain": 20,
+    "curiosity": 15,
+    "medical_importance": 15,
+    "evidence_strength": 15,
+    "thumbnail_potential": 10,
+    "title_strength": 10,
+    "competition_gap": 10,
+    "evergreen": 5
+  },
+  "grading": {
+    "90-100": "Publish Immediately",
+    "80-89": "High Priority",
+    "70-79": "Worth Producing",
+    "60-69": "Needs Improvement",
+    "Below60": "Reject"
+  }
+}

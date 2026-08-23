@@ -1,0 +1,218 @@
+{
+  "version": "1.0",
+  "system_name": "Telemetry Engine",
+  "purpose": "Analyze published Senior Health AI video performance and produce reporting-only analytics outputs.",
+  "scope": {
+    "input_sources": [
+      "Analytics/video_performance.csv",
+      "Analytics/video_performance.json",
+      "user_provided_video_metrics"
+    ],
+    "allowed_outputs": [
+      "Analytics/monthly_report.md",
+      "Analytics/improvement_suggestions.md"
+    ],
+    "forbidden_auto_edits": [
+      "AGENT.md",
+      "Agents/*.md",
+      "Knowledge/*.md",
+      "System/*.json",
+      "Projects/**/*"
+    ]
+  },
+  "required_video_fields": [
+    "video_id",
+    "topic",
+    "title",
+    "thumbnail_version",
+    "publish_date",
+    "impressions",
+    "views",
+    "CTR",
+    "average_view_duration",
+    "average_percentage_viewed",
+    "30_second_retention",
+    "likes",
+    "comments",
+    "shares",
+    "subscribers_gained"
+  ],
+  "optional_video_fields": [
+    "title_style",
+    "thumbnail_style",
+    "hook_style",
+    "script_runtime_minutes",
+    "production_pacing_notes",
+    "topic_cluster",
+    "publish_month",
+    "traffic_source_notes"
+  ],
+  "metric_definitions": {
+    "CTR": {
+      "type": "percentage",
+      "description": "Views divided by impressions when supplied by platform or computed from views/impressions when appropriate."
+    },
+    "average_view_duration": {
+      "type": "duration",
+      "description": "Average amount of time viewers watched. Preserve the source unit when provided."
+    },
+    "average_percentage_viewed": {
+      "type": "percentage",
+      "description": "Average percentage of total video viewed."
+    },
+    "30_second_retention": {
+      "type": "percentage",
+      "description": "Percentage of viewers still watching at 30 seconds."
+    },
+    "engagement": {
+      "likes": "Raw like count.",
+      "comments": "Raw comment count.",
+      "shares": "Raw share count.",
+      "subscribers_gained": "Raw subscriber gain attributed to the video."
+    }
+  },
+  "analysis_categories": {
+    "titles": {
+      "goal": "Identify title styles associated with high CTR and healthy retention.",
+      "signals": [
+        "CTR",
+        "views",
+        "average_percentage_viewed",
+        "30_second_retention"
+      ],
+      "risk_flags": [
+        "high CTR with low average percentage viewed",
+        "sensational medical wording",
+        "unclear search intent"
+      ]
+    },
+    "thumbnails": {
+      "goal": "Identify thumbnail styles associated with high CTR without retention mismatch.",
+      "signals": [
+        "thumbnail_version",
+        "CTR",
+        "30_second_retention",
+        "average_percentage_viewed"
+      ],
+      "style_dimensions": [
+        "human face",
+        "food visibility",
+        "doctor authority",
+        "warning text",
+        "color contrast",
+        "composition simplicity",
+        "mobile readability"
+      ]
+    },
+    "hooks": {
+      "goal": "Identify opening styles that protect the first 30 seconds.",
+      "signals": [
+        "30_second_retention",
+        "average_percentage_viewed",
+        "comments"
+      ],
+      "style_dimensions": [
+        "self-identification",
+        "surprising statement",
+        "curiosity loop",
+        "promise",
+        "emotional reason to continue"
+      ]
+    },
+    "script_retention": {
+      "goal": "Identify script structures that improve average view duration and average percentage viewed.",
+      "signals": [
+        "average_view_duration",
+        "average_percentage_viewed",
+        "30_second_retention"
+      ],
+      "style_dimensions": [
+        "open loops",
+        "pattern interrupts",
+        "mini stories",
+        "micro recaps",
+        "practical demonstrations",
+        "myth versus reality sections"
+      ]
+    },
+    "production_pacing": {
+      "goal": "Identify visual pacing patterns that support retention.",
+      "signals": [
+        "average_view_duration",
+        "average_percentage_viewed",
+        "30_second_retention"
+      ],
+      "style_dimensions": [
+        "avatar balance",
+        "visual pattern interrupts",
+        "fullscreen b-roll",
+        "graphic explainers",
+        "on-screen text clarity"
+      ]
+    },
+    "topics": {
+      "goal": "Identify topic clusters with strong demand and trustworthy viewer response.",
+      "signals": [
+        "impressions",
+        "views",
+        "CTR",
+        "average_percentage_viewed",
+        "subscribers_gained"
+      ],
+      "topic_dimensions": [
+        "blood pressure",
+        "kidney health",
+        "sleep",
+        "breakfast",
+        "grocery choices",
+        "medication safety",
+        "digestion",
+        "heart health"
+      ]
+    }
+  },
+  "monthly_report_requirements": [
+    "reporting_period",
+    "data_source",
+    "data_completeness",
+    "video_performance_table",
+    "highest_CTR",
+    "lowest_CTR",
+    "best_AVD",
+    "worst_AVD",
+    "best_thumbnail_style",
+    "best_title_style",
+    "best_hook_style",
+    "suggested_improvements",
+    "data_issues"
+  ],
+  "performance_thresholds": {
+    "ctr": {
+      "excellent": 10.0,
+      "strong": 8.0,
+      "acceptable": 6.0,
+      "needs_work_below": 5.0
+    },
+    "average_percentage_viewed": {
+      "excellent": 50.0,
+      "strong": 42.0,
+      "acceptable": 35.0,
+      "needs_work_below": 30.0
+    },
+    "30_second_retention": {
+      "excellent": 75.0,
+      "strong": 68.0,
+      "acceptable": 60.0,
+      "needs_work_below": 55.0
+    }
+  },
+  "validation_rules": {
+    "must_not_fabricate_missing_metrics": true,
+    "must_label_inferred_styles": true,
+    "must_distinguish_correlation_from_causation": true,
+    "must_flag_ctr_retention_mismatch": true,
+    "must_keep_medical_safety_above_performance": true,
+    "must_not_auto_modify_agents": true,
+    "must_not_auto_modify_production_files": true
+  }
+}

@@ -1,0 +1,49 @@
+{
+  "module": "hook_engine",
+  "version": "1.0",
+  "beat_schema": [
+    { "beat": 1, "t_start": 0, "t_end": 5, "function": "pattern_interrupt", "required": true },
+    { "beat": 2, "t_start": 5, "t_end": 15, "function": "self_identification", "required": true },
+    { "beat": 3, "t_start": 15, "t_end": 30, "function": "emotional_anchor", "required": true },
+    { "beat": 4, "t_start": 30, "t_end": 45, "function": "credibility_plus_statistic", "required": true },
+    { "beat": 5, "t_start": 45, "t_end": 60, "function": "open_loop_numbered_promise", "required": true }
+  ],
+  "opening_strategies_ranked": [
+    { "id": "O1", "name": "physical_participation", "example": "Hold up your hand and look right now", "rank": 1 },
+    { "id": "O2", "name": "anti_authority_secret", "example": "Your doctor will never tell you this", "rank": 2 },
+    { "id": "O3", "name": "symptom_checklist", "example": "If you have even one of these four signs", "rank": 3 },
+    { "id": "O4", "name": "sensory_scenario", "example": "You squint at the menu and everything goes fuzzy", "rank": 4 },
+    { "id": "O5", "name": "narrative_cold_open", "example": "Picture this: a 71-year-old man, still mowing his lawn", "rank": 5 },
+    { "id": "O6", "name": "contrarian_belief_attack", "example": "If you think walking is the best exercise, listen closely", "rank": 6 }
+  ],
+  "curiosity_loop_techniques": [
+    "withheld_payoff_tease",
+    "numbered_promise",
+    "countdown_structure",
+    "body_as_oracle_claim"
+  ],
+  "pattern_interrupts": [
+    "direct_command",
+    "unexpected_apology",
+    "shocking_statistic",
+    "threat_during_safe_activity"
+  ],
+  "retention_methods": [
+    "delay_greeting_until_after_tension",
+    "short_punchy_lines",
+    "symptom_checklist",
+    "reopen_loop_every_60_90s",
+    "restate_strongest_payoff_near_end"
+  ],
+  "failure_modes": [
+    "soft_greeting_before_tension",
+    "vague_statistic",
+    "benefit_without_gap"
+  ],
+  "hook_rules": [
+    { "id": "HR1", "rule": "credentials_after_tension", "severity": "block" },
+    { "id": "HR2", "rule": "exactly_one_hard_statistic", "severity": "warn" },
+    { "id": "HR3", "rule": "villain_is_system_not_viewer", "severity": "warn" },
+    { "id": "HR4", "rule": "end_on_open_loop", "severity": "block" }
+  ]
+}

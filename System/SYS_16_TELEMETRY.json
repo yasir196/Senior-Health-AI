@@ -1,0 +1,27 @@
+{
+  "version": "1.0",
+  "track": {
+    "ctr": {
+      "excellent": 10,
+      "good": 8,
+      "average": 6
+    },
+    "average_view_duration": {
+      "excellent": 55,
+      "good": 45,
+      "average": 35
+    },
+    "viewer_retention": {
+      "first30sec": 75,
+      "midpoint": 55,
+      "end": 35
+    },
+    "engagement": {
+      "likes": true,
+      "comments": true,
+      "shares": true,
+      "subscribers": true
+    }
+  },
+  "review_cycle": "Every 30 days"
+}
